@@ -1,31 +1,33 @@
 import React from 'react';
-import '../styles/index.css';
+import type { Metadata, Viewport } from 'next';
+import ReduxProvider from '@/providers/ReduxProvider';
+import '@/styles/globals.css';
 
-export const viewport = {
+export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
 };
 
-export const metadata = {
-  title: 'Next.js with Tailwind CSS',
-  description: 'A boilerplate project with Next.js and Tailwind CSS',
+export const metadata: Metadata = {
+  title: 'Global Puja - पूजा एवं ज्योतिष सेवाएं',
+  description: 'Trusted by millions of devotees for authentic puja and astrology services',
   icons: {
-    icon: [
-      { url: '/favicon.ico', type: 'image/x-icon' }
-    ],
+    icon: '/favicon.ico',
   },
 };
 
-
-export default function RootLayout({
-  children,
-}: Readonly<{
+interface RootLayoutProps {
   children: React.ReactNode;
-}>) {
+}
+
+export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
-      <body>{children}<script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Famansapp6937back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.8"></script>
-</body>
+      <body className="antialiased">
+        <ReduxProvider>
+          {children}
+        </ReduxProvider>
+      </body>
     </html>
   );
 }

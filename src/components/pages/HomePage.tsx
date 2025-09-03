@@ -1,6 +1,7 @@
 'use client';
+
 import React from 'react';
-import Footer from '@/components/common/Footer';
+import Footer from '@/components/layout/Footer';
 import HeroSection from '@/components/sections/HeroSection';
 import TrustSection from '@/components/sections/TrustSection';
 import PujaSection from '@/components/sections/PujaSection';
@@ -10,10 +11,12 @@ import VideoSection from '@/components/sections/VideoSection';
 import TestimonialsSection from '@/components/sections/TestimonialsSection';
 import ArticlesSection from '@/components/sections/ArticlesSection';
 import DownloadAppSection from '@/components/sections/DownloadAppSection';
+import { PujaCard, HoroscopeCard, ProcessStep, Testimonial, Article } from '@/types';
 
-export default function Home() {
-  const pujaCards = [
+export default function HomePage() {
+  const pujaCards: PujaCard[] = [
     {
+      id: '1',
       image: "/images/img__1.png",
       title: "Das Mahavidya Mahaurja Yagya",
       temple: "Siddha Mahavidya Temple",
@@ -23,6 +26,7 @@ export default function Home() {
       shareLabel: "Share"
     },
     {
+      id: '2',
       image: "/images/img__2.png",
       title: "Das Mahavidya Mahaurja Yagya",
       temple: "Siddha Mahavidya Temple",
@@ -31,6 +35,7 @@ export default function Home() {
       isNew: true
     },
     {
+      id: '3',
       image: "/images/img__3.png",
       title: "Das Mahavidya Mahaurja Yagya",
       temple: "Siddha Mahavidya Temple",
@@ -39,28 +44,32 @@ export default function Home() {
       isNew: true
     }
   ];
-  const horoscopeCards = [
-    { icon: "/images/img_vector_black_900_01.svg", name: "Aries", dateRange: "Mar 21 - Apr 19" },
-    { icon: "/images/img_vector_black_900_01_34x36.svg", name: "Taurus", dateRange: "Mar 21 - Apr 19" },
-    { icon: "/images/img_vector_black_900_01_34x32.svg", name: "Gemini", dateRange: "Mar 21 - Apr 19" },
-    { icon: "/images/img_vector_black_900_01_36x26.svg", name: "Cancer", dateRange: "Mar 21 - Apr 19" },
-    { icon: "/images/img_vector_black_900_01_34x40.png", name: "Leo", dateRange: "Mar 21 - Apr 19" },
-    { icon: "/images/img_vector_black_900_01_34x26.svg", name: "Virgo", dateRange: "Mar 21 - Apr 19" },
-    { icon: "/images/img_vector_black_900_01_22x36.svg", name: "Libra", dateRange: "Mar 21 - Apr 19" },
-    { icon: "/images/img_component_2.png", name: "Scorpio", dateRange: "Mar 21 - Apr 19" },
-    { icon: "/images/img_vector_black_900_01_34x30.svg", name: "Sagittairus", dateRange: "Mar 21 - Apr 19" },
-    { icon: "/images/img_vector_34x32.svg", name: "Capricorn", dateRange: "Mar 21 - Apr 19" },
-    { icon: "/images/img_vector_black_900_01_34x28.svg", name: "Aquarius", dateRange: "Mar 21 - Apr 19" },
-    { icon: "/images/img_vector_black_900_01_26x36.svg", name: "Pisces", dateRange: "Mar 21 - Apr 19" }
+
+  const horoscopeCards: HoroscopeCard[] = [
+    { id: '1', icon: "/images/img_vector_black_900_01.svg", name: "Aries", dateRange: "Mar 21 - Apr 19" },
+    { id: '2', icon: "/images/img_vector_black_900_01_34x36.svg", name: "Taurus", dateRange: "Mar 21 - Apr 19" },
+    { id: '3', icon: "/images/img_vector_black_900_01_34x32.svg", name: "Gemini", dateRange: "Mar 21 - Apr 19" },
+    { id: '4', icon: "/images/img_vector_black_900_01_36x26.svg", name: "Cancer", dateRange: "Mar 21 - Apr 19" },
+    { id: '5', icon: "/images/img_vector_black_900_01_34x40.png", name: "Leo", dateRange: "Mar 21 - Apr 19" },
+    { id: '6', icon: "/images/img_vector_black_900_01_34x26.svg", name: "Virgo", dateRange: "Mar 21 - Apr 19" },
+    { id: '7', icon: "/images/img_vector_black_900_01_22x36.svg", name: "Libra", dateRange: "Mar 21 - Apr 19" },
+    { id: '8', icon: "/images/img_component_2.png", name: "Scorpio", dateRange: "Mar 21 - Apr 19" },
+    { id: '9', icon: "/images/img_vector_black_900_01_34x30.svg", name: "Sagittairus", dateRange: "Mar 21 - Apr 19" },
+    { id: '10', icon: "/images/img_vector_34x32.svg", name: "Capricorn", dateRange: "Mar 21 - Apr 19" },
+    { id: '11', icon: "/images/img_vector_black_900_01_34x28.svg", name: "Aquarius", dateRange: "Mar 21 - Apr 19" },
+    { id: '12', icon: "/images/img_vector_black_900_01_26x36.svg", name: "Pisces", dateRange: "Mar 21 - Apr 19" }
   ];
-  const processSteps = [
+
+  const processSteps: ProcessStep[] = [
     {
+      id: '1',
       stepNumber: "1st",
       title: "Journey into the Mysteries of the Cosmos",
       location: "48 Walder Crescent, Barnard",
       datetime: "December 29 @ 10:00 am - December 29 @ 4:30 pm"
     },
     {
+      id: '2',
       stepNumber: "2nd",
       title: "Stargazing Wisdom, Tailored for You",
       location: "48 Walder Crescent, Barnard",
@@ -68,20 +77,24 @@ export default function Home() {
       isHighlighted: true
     },
     {
+      id: '3',
       stepNumber: "3rd",
       title: "Charting Your Cosmic Destiny with Precision",
       location: "48 Walder Crescent, Barnard",
       datetime: "December 29 @ 10:00 am - December 29 @ 4:30 pm"
     },
     {
+      id: '4',
       stepNumber: "4th",
       title: "Charting Your Cosmic Destiny with Precision",
       location: "48 Walder Crescent, Barnard",
       datetime: "December 29 @ 10:00 am - December 29 @ 4:30 pm"
     }
   ];
-  const testimonials = [
+
+  const testimonials: Testimonial[] = [
     {
+      id: '1',
       avatar: "/images/img_ellipse_5.png",
       name: "Jennifer Knight",
       role: "Designer",
@@ -89,6 +102,7 @@ export default function Home() {
       testimonial: "Suspendisse elit eros, elementum quis massa sed, luctus pharetra risus. Morbi placerat fermentum mauris, eget egestas sem mollis ut. Proin vitae ltus at libero condimentum consectetur et anim."
     },
     {
+      id: '2',
       avatar: "/images/img_ellipse_5_86x86.png",
       name: "Meadow Morrow",
       role: "Designer",
@@ -96,6 +110,7 @@ export default function Home() {
       testimonial: "Suspendisse elit eros, elementum quis massa sed, luctus pharetra risus. Morbi placerat fermentum mauris, eget egestas sem mollis ut. Proin vitae ltus at libero condimentum consectetur et anim."
     },
     {
+      id: '3',
       avatar: "/images/img_ellipse_5_1.png",
       name: "Deborah Booker",
       role: "Designer",
@@ -103,8 +118,10 @@ export default function Home() {
       testimonial: "Suspendisse elit eros, elementum quis massa sed, luctus pharetra risus. Morbi placerat fermentum mauris, eget egestas sem mollis ut. Proin vitae ltus at libero condimentum consectetur et anim."
     }
   ];
-  const articles = [
+
+  const articles: Article[] = [
     {
+      id: '1',
       image: "/images/img_blog1_jpg.png",
       date: "July 29, 2020",
       author: "By - Admin",
@@ -113,6 +130,7 @@ export default function Home() {
       excerpt: "Consectetur adipiscing elit, sed desdo eiusmod tempor incididuesdeentiut labore etesde doloesire esdessdes magna aliquapspendisse and the gravida."
     },
     {
+      id: '2',
       image: "/images/img_blog1_jpg.png",
       date: "July 29, 2020",
       author: "By - Admin",
@@ -121,6 +139,7 @@ export default function Home() {
       excerpt: "Consectetur adipiscing elit, sed desdo eiusmod tempor incididuesdeentiut labore etesde doloesire esdessdes magna aliquapspendisse and the gravida."
     },
     {
+      id: '3',
       image: "/images/img_blog2_jpg.png",
       date: "July 29, 2020",
       author: "By - Admin",
@@ -129,6 +148,7 @@ export default function Home() {
       excerpt: "Consectetur adipiscing elit, sed desdo eiusmod tempor incididuesdeentiut labore etesde doloesire esdessdes magna aliquapspendisse and the gravida."
     },
     {
+      id: '4',
       image: "/images/img_blog3_jpg.png",
       date: "July 29, 2020",
       author: "By - Admin",

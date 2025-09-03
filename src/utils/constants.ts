@@ -1,0 +1,33 @@
+// Application constants
+export const APP_NAME = 'Global Puja';
+export const APP_DESCRIPTION = 'पूजा एवं ज्योतिष सेवाएं';
+
+export const ROUTES = {
+  HOME: '/',
+  ADMIN: '/admin',
+  ADD_PUJA: '/admin/add-puja',
+  HOROSCOPE: '/horoscope',
+  SHOP: '/shop',
+  NEWS: '/news',
+  PAGES: '/pages',
+} as const;
+
+export const API_ENDPOINTS = {
+  AUTH: {
+    LOGIN: '/auth/login',
+    REGISTER: '/auth/register',
+    LOGOUT: '/auth/logout',
+  },
+  PUJAS: {
+    GET_ALL: '/pujas',
+    GET_BY_ID: (id: string) => `/pujas/${id}`,
+    CREATE: '/pujas',
+    UPDATE: (id: string) => `/pujas/${id}`,
+    DELETE: (id: string) => `/pujas/${id}`,
+  },
+} as const;
+
+export const STORAGE_KEYS = {
+  AUTH_TOKEN: 'auth_token',
+  USER_DATA: 'user_data',
+} as const;

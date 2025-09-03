@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600&family=Lato:wght@400&family=Philosopher:wght@700&family=Mulish:wght@400&display=swap');
+
 @layer base {
   :root {
     /* Global Colors */
@@ -27,9 +29,35 @@
     --footer-bg-1: #0f0f0fb2;
     --footer-bg-2: #f7a278;
   }
+
+  body {
+    font-family: 'Work Sans', 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  *, *::before, *::after {
+    box-sizing: inherit;
+  }
 }
 
 @layer utilities {
+  .animate-fadeIn {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
   /* Global */
   .bg-global-1 {
     background-color: var(--global-bg-1);

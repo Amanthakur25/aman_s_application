@@ -1,13 +1,53 @@
 'use client';
-import React, { useState } from 'react';
 
-const LoginModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpen, onClose }) => {
+import React, { useState } from 'react';
+import { useAppSelector, useAppDispatch } from '@/hooks';
+import { setLoginModalOpen } from '@/store/slices/uiSlice';
+import { loginStart, loginSuccess, loginFailure } from '@/store/slices/authSlice';
+
+const LoginModal: React.FC = () => {
+  const dispatch = useAppDispatch();
+  const { isLoginModalOpen } = useAppSelector((state) => state.ui);
+  const { isLoading } = useAppSelector((state) => state.auth);
+  
   const [isLogin, setIsLogin] = useState(true);
   const [emailOrPhone, setEmailOrPhone] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
-  if (!isOpen) return null;
+  const handleClose = () => {
+    dispatch(setLoginModalOpen(false));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!isLogin && password !== confirmPassword) {
+      dispatch(loginFailure('Passwords do not match'));
+      return;
+    }
+
+    dispatch(loginStart());
+    
+    try {
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      const user = {
+        id: '1',
+        email: emailOrPhone,
+        name: 'User Name',
+        isAuthenticated: true,
+      };
+      
+      dispatch(loginSuccess(user));
+      handleClose();
+    } catch (error) {
+      dispatch(loginFailure('Login failed. Please try again.'));
+    }
+  };
+
+  if (!isLoginModalOpen) return null;
 
   return (
     <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
@@ -15,7 +55,7 @@ const LoginModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpen
         {/* Close Button */}
         <button
           className="absolute top-4 right-4 text-black/70 hover:text-black"
-          onClick={onClose}
+          onClick={handleClose}
         >
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -48,7 +88,7 @@ const LoginModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpen
         </div>
 
         {/* Form */}
-        <form className="space-y-5">
+        <form onSubmit={handleSubmit} className="space-y-5">
           <div>
             <label className="block text-sm font-medium text-black font-['Lato']">Email or Phone</label>
             <input
@@ -57,6 +97,7 @@ const LoginModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpen
               onChange={(e) => setEmailOrPhone(e.target.value)}
               className="mt-1 w-full px-4 py-2 bg-white/30 border border-orange-200/30 rounded-lg focus:ring-2 focus:ring-orange-200 focus:border-transparent text-black placeholder-black/50"
               placeholder="Enter email or phone"
+              required
             />
           </div>
           <div>
@@ -67,6 +108,7 @@ const LoginModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpen
               onChange={(e) => setPassword(e.target.value)}
               className="mt-1 w-full px-4 py-2 bg-white/30 border border-orange-200/30 rounded-lg focus:ring-2 focus:ring-orange-200 focus:border-transparent text-black placeholder-black/50"
               placeholder="Enter password"
+              required
             />
           </div>
           {!isLogin && (
@@ -78,14 +120,16 @@ const LoginModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpen
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 className="mt-1 w-full px-4 py-2 bg-white/30 border border-orange-200/30 rounded-lg focus:ring-2 focus:ring-orange-200 focus:border-transparent text-black placeholder-black/50"
                 placeholder="Confirm password"
+                required
               />
             </div>
           )}
           <button
             type="submit"
-            className="w-full bg-gradient-to-r from-orange-200/60 to-orange-300/70 text-black font-semibold py-2.5 rounded-lg hover:shadow-lg transition-all duration-200 font-['Work_Sans'] uppercase text-sm"
+            disabled={isLoading}
+            className="w-full bg-gradient-to-r from-orange-200/60 to-orange-300/70 text-black font-semibold py-2.5 rounded-lg hover:shadow-lg transition-all duration-200 font-['Work_Sans'] uppercase text-sm disabled:opacity-50"
           >
-            {isLogin ? 'Login' : 'Sign Up'}
+            {isLoading ? 'Loading...' : (isLogin ? 'Login' : 'Sign Up')}
           </button>
         </form>
 
@@ -100,7 +144,7 @@ const LoginModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpen
             {isLogin ? 'Login with Google' : 'Sign up with Google'}
           </button>
           <p className="mt-4 text-sm text-black/70">
-            {isLogin ? "Don’t have an account?" : "Already have an account?"}
+            {isLogin ? "Don't have an account?" : "Already have an account?"}
             <button className="text-orange-600 hover:underline ml-1" onClick={() => setIsLogin(!isLogin)}>
               {isLogin ? 'Sign up' : 'Login'}
             </button>

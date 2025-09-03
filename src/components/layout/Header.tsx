@@ -1,14 +1,18 @@
-"use client";
-import React, { useState } from "react";
-import Image from "next/image";
-import LoginModal from "./LoginModal";
-import { useRouter, usePathname } from "next/navigation";
+'use client';
+
+import React from 'react';
+import Image from 'next/image';
+import { useRouter, usePathname } from 'next/navigation';
+import { useAppSelector, useAppDispatch } from '@/hooks';
+import { setLoginModalOpen, setMobileMenuOpen } from '@/store/slices/uiSlice';
+import LoginModal from '@/components/modals/LoginModal';
 
 const Header: React.FC = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isLoginOpen, setIsLoginOpen] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
+  const dispatch = useAppDispatch();
+  
+  const { isLoginModalOpen, isMobileMenuOpen } = useAppSelector((state) => state.ui);
 
   const menuItems = [
     { name: "Home", href: "/", active: pathname === "/" },
@@ -18,6 +22,13 @@ const Header: React.FC = () => {
     { name: "News", href: "/news", active: pathname?.startsWith("/news") },
     { name: "Admin", href: "/admin", active: pathname?.startsWith("/admin") },
   ];
+
+  const handleMenuItemClick = (href: string) => {
+    router.push(href);
+    if (isMobileMenuOpen) {
+      dispatch(setMobileMenuOpen(false));
+    }
+  };
 
   return (
     <header className="w-full py-4">
@@ -52,7 +63,7 @@ const Header: React.FC = () => {
                   className="relative w-20 h-8 flex items-center justify-center"
                 >
                   <button
-                    onClick={() => router.push(item.href)}
+                    onClick={() => handleMenuItemClick(item.href)}
                     className={`
                       absolute inset-0 w-full h-full rounded-full text-sm font-medium uppercase font-['Work_Sans'] 
                       transition-all duration-300 ease-in-out transform flex items-center justify-center
@@ -86,7 +97,7 @@ const Header: React.FC = () => {
             {/* Login Button */}
             <button
               className="hidden sm:flex items-center gap-2 bg-gradient-to-r from-orange-200/70 to-orange-300/70 text-white font-medium px-4 py-2 rounded-full hover:shadow-lg hover:scale-105 transition-all duration-300 font-['Work_Sans'] uppercase text-sm hover:from-orange-300 hover:to-orange-400"
-              onClick={() => setIsLoginOpen(true)}
+              onClick={() => dispatch(setLoginModalOpen(true))}
             >
               <Image
                 src="/images/img_vector.svg"
@@ -108,7 +119,7 @@ const Header: React.FC = () => {
             {/* Mobile Menu Button */}
             <button
               className="lg:hidden p-2 rounded-full bg-gradient-to-r from-orange-200/70 to-orange-300/70 backdrop-blur-sm text-white hover:bg-orange-300/50 transition-all duration-300 hover:scale-105"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              onClick={() => dispatch(setMobileMenuOpen(!isMobileMenuOpen))}
             >
               <svg
                 className="w-5 h-5"
@@ -130,14 +141,14 @@ const Header: React.FC = () => {
         {/* Mobile Navigation */}
         <nav
           className={`${
-            isMenuOpen ? "block animate-fadeIn" : "hidden"
+            isMobileMenuOpen ? "block animate-fadeIn" : "hidden"
           } lg:hidden bg-gradient-to-r from-orange-200/60 to-orange-300/60 backdrop-blur-sm rounded-xl mt-4 p-4 shadow-md`}
         >
           <div className="flex flex-col space-y-2">
             {menuItems.map((item, index) => (
               <div key={index} className="relative w-full h-10 flex items-center">
                 <button
-                  onClick={() => router.push(item.href)}
+                  onClick={() => handleMenuItemClick(item.href)}
                   className={`
                     absolute inset-0 w-full h-full rounded-xl text-sm font-medium text-left uppercase font-['Work_Sans'] 
                     transition-all duration-300 ease-in-out transform flex items-center px-4
@@ -155,7 +166,7 @@ const Header: React.FC = () => {
 
             <button
               className="flex items-center justify-center gap-2 bg-gradient-to-r from-orange-200/70 to-orange-300/70 text-white font-medium px-4 py-2 rounded-full mt-2 font-['Work_Sans'] uppercase text-sm hover:shadow-lg hover:scale-105 transition-all duration-300 hover:from-orange-300 hover:to-orange-400"
-              onClick={() => setIsLoginOpen(true)}
+              onClick={() => dispatch(setLoginModalOpen(true))}
             >
               <Image
                 src="/images/img_vector.svg"
@@ -177,7 +188,7 @@ const Header: React.FC = () => {
         </nav>
 
         {/* Login Modal */}
-        <LoginModal isOpen={isLoginOpen} onClose={() => setIsLoginOpen(false)} />
+        <LoginModal />
       </div>
     </header>
   );

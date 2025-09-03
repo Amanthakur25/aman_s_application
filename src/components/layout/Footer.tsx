@@ -1,7 +1,8 @@
 'use client';
+
 import React, { useState } from 'react';
 import Image from 'next/image';
-import EditText from '../ui/EditText';
+import EditText from '@/components/ui/EditText';
 
 const Footer: React.FC = () => {
   const [email, setEmail] = useState('');
