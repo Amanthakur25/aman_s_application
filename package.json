@@ -11,8 +11,10 @@
     "format": "prettier --write \"src/**/*.{ts,tsx,css,md,json}\""
   },
   "dependencies": {
+    "@dhiwise/component-tagger": "^1.0.10",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
+    "@mui/icons-material": "^7.3.2",
     "@mui/material": "^7.3.2",
     "@reduxjs/toolkit": "^2.0.1",
     "@tailwindcss/typography": "^0.5.16",

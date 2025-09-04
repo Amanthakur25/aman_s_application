@@ -47,11 +47,19 @@ export interface Article {
 }
 
 export interface User {
-  id: string;
+  id: number;
+  name: string;
   email: string;
-  name?: string;
-  phone?: string;
-  isAuthenticated: boolean;
+  mobile?: string;
+  role?: string;
+  is_active?: boolean;
+  email_verified?: boolean;
+  created_at?: string;
+  updated_at?: string;
+  isAuthenticated?: boolean;
+  // OAuth2 token fields
+  access_token?: string;
+  token_type?: string;
 }
 
 export interface AuthState {
@@ -64,4 +72,9 @@ export interface UIState {
   isLoginModalOpen: boolean;
   isMobileMenuOpen: boolean;
   isLoading: boolean;
+}
+
+export interface TokenResponse {
+  access_token: string;
+  token_type: string;
 }

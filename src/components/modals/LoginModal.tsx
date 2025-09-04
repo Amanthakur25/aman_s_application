@@ -1,49 +1,94 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useAppSelector, useAppDispatch } from '@/hooks';
 import { setLoginModalOpen } from '@/store/slices/uiSlice';
-import { loginStart, loginSuccess, loginFailure } from '@/store/slices/authSlice';
+import { loginStart, loginSuccess, loginFailure, signupUser } from '@/store/slices/authSlice';
+import { apiService } from '@/services/api';
 
 const LoginModal: React.FC = () => {
   const dispatch = useAppDispatch();
   const { isLoginModalOpen } = useAppSelector((state) => state.ui);
-  const { isLoading } = useAppSelector((state) => state.auth);
+  const { isLoading, error } = useAppSelector((state) => state.auth);
   
   const [isLogin, setIsLogin] = useState(true);
-  const [emailOrPhone, setEmailOrPhone] = useState('');
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [mobile, setMobile] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [formError, setFormError] = useState<string | null>(null);
 
   const handleClose = () => {
     dispatch(setLoginModalOpen(false));
   };
 
+  useEffect(() => {
+    if (error) {
+      setFormError(error);
+    }
+  }, [error]);
+  
+  // Close modal on successful signup/login
+  const { user } = useAppSelector((state) => state.auth);
+  useEffect(() => {
+    if (user && !isLoading) {
+      handleClose();
+    }
+  }, [user, isLoading]);
+
+  const validateForm = () => {
+    setFormError(null);
+    
+    if (!isLogin) {
+      if (password !== confirmPassword) {
+        setFormError('Passwords do not match');
+        return false;
+      }
+      
+      if (!name.trim()) {
+        setFormError('Name is required');
+        return false;
+      }
+      
+      if (!mobile.trim()) {
+        setFormError('Mobile number is required');
+        return false;
+      }
+    }
+    
+    return true;
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!isLogin && password !== confirmPassword) {
-      dispatch(loginFailure('Passwords do not match'));
+    if (!validateForm()) {
       return;
     }
 
-    dispatch(loginStart());
-    
-    try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
+    if (isLogin) {
+      dispatch(loginStart());
       
-      const user = {
-        id: '1',
-        email: emailOrPhone,
-        name: 'User Name',
-        isAuthenticated: true,
-      };
-      
-      dispatch(loginSuccess(user));
-      handleClose();
-    } catch (error) {
-      dispatch(loginFailure('Login failed. Please try again.'));
+      try {
+        // Updated login method with client ID and client secret parameters
+        const clientId = process.env.NEXT_PUBLIC_CLIENT_ID || 'default-client-id';
+        const clientSecret = process.env.NEXT_PUBLIC_CLIENT_SECRET || 'default-client-secret';
+        const user = await apiService.login(email, password, clientId, clientSecret);
+        // Store the token in localStorage if available
+        if (user.access_token) {
+          // Import the auth utility
+          const { storeAuthToken } = await import('@/utils/auth');
+          storeAuthToken(user.access_token, user.token_type || 'Bearer');
+        }
+        // Add isAuthenticated flag to the user object
+        dispatch(loginSuccess({...user, isAuthenticated: true}));
+      } catch (error) {
+        dispatch(loginFailure(error instanceof Error ? error.message : 'Login failed. Please try again.'));
+      }
+    } else {
+      // Signup process
+      dispatch(signupUser({ name, email, mobile, password }));
     }
   };
 
@@ -89,17 +134,43 @@ const LoginModal: React.FC = () => {
 
         {/* Form */}
         <form onSubmit={handleSubmit} className="space-y-5">
+          {!isLogin && (
+            <div>
+              <label className="block text-sm font-medium text-black font-['Lato']">Full Name</label>
+              <input
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                className="mt-1 w-full px-4 py-2 bg-white/30 border border-orange-200/30 rounded-lg focus:ring-2 focus:ring-orange-200 focus:border-transparent text-black placeholder-black/50"
+                placeholder="Enter your full name"
+                required
+              />
+            </div>
+          )}
           <div>
-            <label className="block text-sm font-medium text-black font-['Lato']">Email or Phone</label>
+            <label className="block text-sm font-medium text-black font-['Lato']">Email</label>
             <input
-              type="text"
-              value={emailOrPhone}
-              onChange={(e) => setEmailOrPhone(e.target.value)}
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               className="mt-1 w-full px-4 py-2 bg-white/30 border border-orange-200/30 rounded-lg focus:ring-2 focus:ring-orange-200 focus:border-transparent text-black placeholder-black/50"
-              placeholder="Enter email or phone"
+              placeholder="Enter your email"
               required
             />
           </div>
+          {!isLogin && (
+            <div>
+              <label className="block text-sm font-medium text-black font-['Lato']">Mobile Number</label>
+              <input
+                type="tel"
+                value={mobile}
+                onChange={(e) => setMobile(e.target.value)}
+                className="mt-1 w-full px-4 py-2 bg-white/30 border border-orange-200/30 rounded-lg focus:ring-2 focus:ring-orange-200 focus:border-transparent text-black placeholder-black/50"
+                placeholder="Enter your mobile number"
+                required
+              />
+            </div>
+          )}
           <div>
             <label className="block text-sm font-medium text-black font-['Lato']">Password</label>
             <input
@@ -122,6 +193,11 @@ const LoginModal: React.FC = () => {
                 placeholder="Confirm password"
                 required
               />
+            </div>
+          )}
+          {formError && (
+            <div className="text-red-500 text-sm mt-2">
+              {formError}
             </div>
           )}
           <button

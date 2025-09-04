@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import Image from 'next/image';
-import Header from '@/components/common/Header';
+import Header from '../../components/layout/Header';
 
 const HeroSection: React.FC = () => (
   <section className="w-full min-h-screen bg-gradient-to-r from-orange-100/20 to-orange-200/40 relative overflow-hidden">
