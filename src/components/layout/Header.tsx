@@ -120,36 +120,6 @@ const Header: React.FC = () => {
                 className="w-24 h-4"
               />
             </div>
-            {/* Language Dropdown */}
-            <div
-              className="relative ml-4"
-              onMouseEnter={() => setIsLanguageDropdownOpen(true)}
-              onMouseLeave={() => setIsLanguageDropdownOpen(false)}
-            >
-              <button className="flex items-center gap-2 bg-gradient-to-r from-orange-200/70 to-orange-300/70 rounded-full px-3 py-1 hover:shadow-lg hover:scale-105 transition-all duration-300">
-                <Image
-                  src="/images/language_icon.svg"
-                  alt="Language Icon"
-                  width={20}
-                  height={20}
-                  className="w-5 h-5"
-                />
-                <span className="text-sm font-medium uppercase font-['Work_Sans'] text-white">Language</span>
-              </button>
-              {isLanguageDropdownOpen && (
-                <div className="absolute top-10 left-0 w-40 bg-gradient-to-r from-orange-200/80 to-orange-300/80 backdrop-blur-sm rounded-xl shadow-md z-10 animate-fadeIn">
-                  {languageOptions.map((lang, index) => (
-                    <button
-                      key={index}
-                      onClick={() => handleLanguageChange(lang.code)}
-                      className="w-full text-left px-4 py-2 text-sm font-medium uppercase font-['Work_Sans'] text-white hover:bg-orange-300/50 transition-all duration-300"
-                    >
-                      {lang.name}
-                    </button>
-                  ))}
-                </div>
-              )}
-            </div>
           </div>
 
           {/* Desktop Navigation */}
@@ -191,6 +161,37 @@ const Header: React.FC = () => {
                 className="w-5 h-5"
               />
             </button>
+
+            {/* Language Dropdown */}
+            <div
+              className="relative hidden sm:block"
+              onMouseEnter={() => setIsLanguageDropdownOpen(true)}
+              onMouseLeave={() => setIsLanguageDropdownOpen(false)}
+            >
+              <button className="flex items-center gap-2 bg-gradient-to-r from-orange-200/70 to-orange-300/70 rounded-full px-3 py-1 hover:shadow-lg hover:scale-105 transition-all duration-300">
+                <Image
+                  src="/images/language_icon.svg"
+                  alt="Language Icon"
+                  width={20}
+                  height={20}
+                  className="w-5 h-5"
+                />
+                <span className="text-sm font-medium uppercase font-['Work_Sans'] text-white">Language</span>
+              </button>
+              {isLanguageDropdownOpen && (
+                <div className="absolute top-10 right-0 w-40 bg-gradient-to-r from-orange-200/80 to-orange-300/80 backdrop-blur-sm rounded-xl shadow-md z-10 animate-fadeIn">
+                  {languageOptions.map((lang, index) => (
+                    <button
+                      key={index}
+                      onClick={() => handleLanguageChange(lang.code)}
+                      className="w-full text-left px-4 py-2 text-sm font-medium uppercase font-['Work_Sans'] text-white hover:bg-orange-300/50 transition-all duration-300"
+                    >
+                      {lang.name}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
 
             {/* Login Button */}
             <button

@@ -3,7 +3,18 @@ import React from 'react';
 import Image from 'next/image';
 import Header from '../../components/layout/Header';
 
-const HeroSection: React.FC = () => (
+const HeroSection: React.FC = () => {
+  const handleBookNowClick = () => {
+    const pujaSection = document.getElementById('puja-section');
+    if (pujaSection) {
+      pujaSection.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+    }
+  };
+
+  return (
   <section className="w-full min-h-screen bg-gradient-to-r from-orange-100/20 to-orange-200/40 relative overflow-hidden">
     <div 
       className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-90"
@@ -20,7 +31,10 @@ const HeroSection: React.FC = () => (
             <p className="text-lg sm:text-xl text-gray-700 font-['Lato'] mb-8 max-w-xl">
               Cras sed rhoncus risus, non accumsan tortor. Maecenas feugiat ipsum eu ornare uam. Fusce blandit elementum auctor. Nam pulvinar lectus in efficitur phareta.
             </p>
-            <button className="inline-flex items-center gap-3 bg-gradient-to-r from-orange-400 to-orange-500 text-white font-semibold px-8 py-4 rounded-full hover:shadow-lg transition-all duration-200 font-['Work_Sans'] uppercase text-sm">
+            <button 
+              onClick={handleBookNowClick}
+              className="inline-flex items-center gap-3 bg-gradient-to-r from-orange-400 to-orange-500 text-white font-semibold px-8 py-4 rounded-full hover:shadow-lg transition-all duration-200 font-['Work_Sans'] uppercase text-sm cursor-pointer"
+            >
               <Image
                 src="/images/img_vector.svg"
                 alt="Book Icon"
@@ -42,6 +56,7 @@ const HeroSection: React.FC = () => (
       </div>
     </div>
   </section>
-);
+  );
+};
 
 export default HeroSection;
