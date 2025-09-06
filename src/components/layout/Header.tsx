@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import { useRouter, usePathname } from 'next/navigation';
 import { useAppSelector, useAppDispatch } from '@/hooks';
@@ -12,6 +12,28 @@ const Header: React.FC = () => {
   const pathname = usePathname();
   const dispatch = useAppDispatch();
   const { isLoginModalOpen, isMobileMenuOpen } = useAppSelector((state) => state.ui);
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
+  const hamburgerRef = useRef<HTMLButtonElement>(null);
+
+  // Close mobile menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        isMobileMenuOpen &&
+        mobileMenuRef.current &&
+        hamburgerRef.current &&
+        !mobileMenuRef.current.contains(event.target as Node) &&
+        !hamburgerRef.current.contains(event.target as Node)
+      ) {
+        dispatch(setMobileMenuOpen(false));
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isMobileMenuOpen, dispatch]);
 
   const menuItems = [
     { name: "Home", href: "/", active: pathname === "/" },
@@ -109,6 +131,7 @@ const Header: React.FC = () => {
 
             {/* Mobile Menu Button */}
             <button
+              ref={hamburgerRef}
               className="lg:hidden p-2 rounded-full bg-gradient-to-r from-orange-200/70 to-orange-300/70 backdrop-blur-sm text-white hover:bg-orange-300/50 transition-all duration-300 hover:scale-105"
               onClick={() => dispatch(setMobileMenuOpen(!isMobileMenuOpen))}
             >
@@ -131,6 +154,7 @@ const Header: React.FC = () => {
 
         {/* Mobile Navigation */}
         <nav
+          ref={mobileMenuRef}
           className={`${
             isMobileMenuOpen ? "block animate-fadeIn" : "hidden"
           } lg:hidden bg-gradient-to-r from-orange-200/60 to-orange-300/60 backdrop-blur-sm rounded-xl mt-4 p-4 shadow-md`}
