@@ -43,13 +43,7 @@ const HeroSection: React.FC = () => {
                 className="w-4 h-4"
               />
               Book Now
-              <Image
-                src="/images/img_vector.svg"
-                alt="Arrow"
-                width={14}
-                height={14}
-                className="w-4 h-4"
-              />
+            //
             </button>
           </div>
         </div>

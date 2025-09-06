@@ -1,8 +1,8 @@
 'use client';
 import React from 'react';
 import Image from 'next/image';
-import TestimonialCard from '@/components/cards/TestimonialCard';
-
+import TestimonialCard from '@/components/cards/TestimonialCard'; 
+import img from '../../../public/images/img_caurosel.png'
 interface TestimonialProps {
   avatar: string;
   name: string;
@@ -16,16 +16,16 @@ interface TestimonialsSectionProps {
 }
 
 const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({ testimonials }) => (
-  <section 
-    className="w-full py-[105px] sm:py-[123px] md:py-[140px] mt-[8px] sm:mt-[9px] md:mt-[10px]"
+  <section
+    className="w-full py-[100px] sm:py-[123px] md:py-[140px] sm:mt-[9px] md:mt-[10px] relative bg-gray-50 overflow-hidden"
     style={{
       backgroundImage: "url('/images/img_background_deep_orange_800.svg')",
-      backgroundSize: 'cover',
+      backgroundSize: 'contain',
       backgroundPosition: 'center',
-      backgroundRepeat: 'no-repeat'
+      backgroundRepeat: 'no-repeat',
     }}
   >
-    <div className="w-full max-w-[1440px] mx-auto px-[180px] sm:px-[210px] md:px-[240px]">
+    <div className="w-full max-w-[1440px] mx-auto px-8 sm:px-16 md:px-24 relative z-10">
       <div className="flex justify-center items-center w-full">
         <div className="flex flex-col justify-start items-start w-full">
           <h2 className="text-[36px] sm:text-[42px] md:text-[48px] font-bold leading-[41px] sm:leading-[48px] md:leading-[54px] text-left text-[#111111] font-['Philosopher'] w-auto">
@@ -39,13 +39,17 @@ const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({ testimonials 
               <TestimonialCard key={index} {...testimonial} />
             ))}
           </div>
-          <Image
-            src="/images/img_caurosel.png"
-            alt="Carousel Indicator"
-            width={158}
-            height={22}
-            className="w-[119px] h-[17px] sm:w-[139px] sm:h-[20px] md:w-[158px] md:h-[22px] self-center mt-[45px] sm:mt-[53px] md:mt-[60px]"
-          />
+          {/* Centered Logo */}
+          <div className="flex justify-center w-full mt-[45px] sm:mt-[53px] md:mt-[60px]">
+            <Image
+              src={img} // Replace with the actual logo image path
+              alt="Shoppikos Logo"
+              width={200} // Adjust width as needed
+              height={50} // Adjust height as needed
+              className="object-contain"
+            />
+          </div>
+        
         </div>
       </div>
     </div>

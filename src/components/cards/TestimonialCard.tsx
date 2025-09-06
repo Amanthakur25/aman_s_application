@@ -6,7 +6,7 @@ interface TestimonialProps {
   avatar: string;
   name: string;
   role: string;
-  rating: string;
+  rating: number;
   testimonial: string;
 }
 
@@ -17,56 +17,52 @@ const TestimonialCard: React.FC<TestimonialProps> = ({
   rating, 
   testimonial 
 }) => (
-  <div className="flex flex-col gap-[22px] sm:gap-[26px] md:gap-[30px] justify-start items-start w-full max-w-[460px] border border-[#f37335] rounded-[30px] bg-[#fff3ee] px-[22px] sm:px-[26px] md:px-[30px] py-[28px] sm:py-[32px] md:py-[38px]">
-    <div className="flex gap-[10px] sm:gap-[12px] md:gap-[14px] justify-start items-center w-full">
+  <div className="flex flex-col gap-6 justify-start items-start w-full max-w-[400px] border border-orange-200 rounded-2xl bg-orange-50 px-8 py-8 relative shadow-sm hover:shadow-lg transition-shadow duration-300">
+    
+    {/* Quote Icon */}
+    <div className="absolute top-6 right-6 opacity-40">
+      <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M15 60C11 60 7.5 58.9 4.5 56.7C1.5 54.5 0 51.5 0 47.5C0 40 2 33.5 6 28.5C10 23.5 15.1 20 22 19V28C18 28.7 15 30.5 13 33.5C11 36.5 10 40 10 44H15C17.5 44 19.5 45 21 47C22.5 49 23 51.5 23 54C23 56.5 22.5 58.5 21 60C19.5 61.5 17.5 62 15 62V60ZM52 60C48 60 44.5 58.9 41.5 56.7C38.5 54.5 37 51.5 37 47.5C37 40 39 33.5 43 28.5C47 23.5 52.1 20 59 19V28C55 28.7 52 30.5 50 33.5C48 36.5 47 40 47 44H52C54.5 44 56.5 45 58 47C59.5 49 60 51.5 60 54C60 56.5 59.5 58.5 58 60C56.5 61.5 54.5 62 52 62V60Z" fill="#FB923C"/>
+      </svg>
+    </div>
+    
+    {/* User Info */}
+    <div className="flex gap-4 justify-start items-center w-full">
       <Image
         src={avatar}
         alt={name}
-        width={86}
-        height={86}
-        className="w-[65px] h-[65px] sm:w-[76px] sm:h-[76px] md:w-[86px] md:h-[86px] rounded-[42px]"
+        width={60}
+        height={60}
+        className="w-[60px] h-[60px] rounded-full object-cover"
       />
-      <div className="flex flex-col justify-start items-start self-end w-full mb-[10px] sm:mb-[12px] md:mb-[14px]">
-        <h3 className="text-[18px] sm:text-[21px] md:text-[24px] font-bold leading-[20px] sm:leading-[24px] md:leading-[27px] text-left text-[#111111] font-['Philosopher']">
+      <div className="flex flex-col justify-start items-start">
+        <h3 className="text-lg font-bold text-gray-900 font-['Philosopher']">
           {name}
         </h3>
-        <p className="text-[13px] sm:text-[15px] md:text-[16px] font-normal leading-[15px] sm:leading-[17px] md:leading-[19px] text-left text-[#333333] font-['Work_Sans']">
+        <p className="text-sm text-gray-600 font-['Work_Sans']">
           {role}
         </p>
       </div>
-      <Image
-        src="/images/img_.svg"
-        alt="Quote"
-        width={92}
-        height={78}
-        className="w-[69px] h-[59px] sm:w-[81px] sm:h-[69px] md:w-[92px] md:h-[78px]"
-      />
     </div>
-    <div className="flex gap-[6px] sm:gap-[7px] md:gap-[8px] justify-start items-center w-full">
-      <Image
-        src="/images/img_group_131069.png"
-        alt="Rating Start"
-        width={22}
-        height={8}
-        className="w-[17px] h-[6px] sm:w-[20px] sm:h-[7px] md:w-[22px] md:h-[8px]"
-      />
-      <div className="w-full h-[1px] sm:h-[1.5px] md:h-[2px] bg-[#f37335] self-end shadow-[0px_4px_4px_#888888ff]"></div>
-      <Image
-        src="/images/img_group_131070.png"
-        alt="Rating End"
-        width={22}
-        height={8}
-        className="w-[17px] h-[6px] sm:w-[20px] sm:h-[7px] md:w-[22px] md:h-[8px]"
-      />
+    
+    {/* --- FIX: Changed diamond ends to circles to match the screenshot --- */}
+    <div className="flex gap-2 items-center w-full">
+      <div className="w-2.5 h-2.5 bg-orange-300 rounded-full"></div>
+      <div className="flex-1 h-[1px] bg-orange-300"></div>
+      <div className="w-2.5 h-2.5 bg-orange-300 rounded-full"></div>
     </div>
-    <Image
-      src={rating}
-      alt="Rating Stars"
-      width={98}
-      height={12}
-      className="w-[74px] h-[9px] sm:w-[86px] sm:h-[11px] md:w-[98px] md:h-[12px]"
-    />
-    <p className="text-[15px] sm:text-[18px] md:text-[20px] font-normal leading-[18px] sm:leading-[21px] md:leading-[24px] text-left text-[#333333] font-['Lato'] w-full mb-[30px] sm:mb-[35px] md:mb-[40px]">
+    
+    {/* Star Rating */}
+    <div className="flex gap-1">
+      {[...Array(rating)].map((_, i) => (
+        <svg key={i} width="18" height="18" viewBox="0 0 24 24" fill="#FB923C" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+        </svg>
+      ))}
+    </div>
+    
+    {/* Testimonial Text */}
+    <p className="text-base leading-relaxed text-gray-700 font-['Work_Sans']">
       {testimonial}
     </p>
   </div>
