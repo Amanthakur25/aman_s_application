@@ -15,6 +15,7 @@ const Header: React.FC = () => {
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const hamburgerRef = useRef<HTMLButtonElement>(null);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [activeMenuItem, setActiveMenuItem] = useState('Home');
 
   // Handle scroll effect for glassmorphism
   useEffect(() => {
@@ -49,15 +50,33 @@ const Header: React.FC = () => {
     };
   }, [isMobileMenuOpen, dispatch]);
 
+  // Update active menu item based on pathname
+  useEffect(() => {
+    if (pathname === '/') {
+      setActiveMenuItem('Home');
+    } else if (pathname?.startsWith('/puja')) {
+      setActiveMenuItem('Puja');
+    } else if (pathname?.startsWith('/horoscope')) {
+      setActiveMenuItem('Horoscope');
+    } else if (pathname?.startsWith('/store')) {
+      setActiveMenuItem('Store');
+    } else if (pathname?.startsWith('/about')) {
+      setActiveMenuItem('More');
+    }
+  }, [pathname]);
+
   const menuItems = [
-    { name: "Home", href: "/", active: pathname === "/" },
-    { name: "Puja", href: "/puja", active: pathname?.startsWith("/puja") },
-    { name: "Horoscope", href: "/horoscope", active: pathname?.startsWith("/horoscope") },
-    { name: "Store", href: "/store", active: pathname?.startsWith("/store") },
-    { name: "More", href: "/about", active: pathname?.startsWith("/about") },
+    { name: "Home", href: "/", active: activeMenuItem === "Home" },
+    { name: "Puja", href: "/puja", active: activeMenuItem === "Puja" },
+    { name: "Horoscope", href: "/horoscope", active: activeMenuItem === "Horoscope" },
+    { name: "Store", href: "/store", active: activeMenuItem === "Store" },
+    { name: "More", href: "/about", active: activeMenuItem === "More" },
   ];
 
   const handleMenuItemClick = (href: string, name: string) => {
+    // Update active state immediately
+    setActiveMenuItem(name);
+    
     if (pathname === "/" && (name === "Puja" || name === "Horoscope")) {
       const sectionId = name === "Puja" ? "puja-section" : "horoscope-section";
       const section = document.getElementById(sectionId);
@@ -84,7 +103,7 @@ const Header: React.FC = () => {
       <div className="w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           {/* Logo Section */}
-          <div className={`flex items-center rounded-full px-4 py-2 shadow-md transition-all duration-300 ${
+          <div className={`flex items-center rounded-full mx-28 px-4 py-2 shadow-md transition-all duration-300 ${
             isScrolled 
               ? 'bg-white/80 backdrop-blur-md border border-white/60' 
               : 'bg-gradient-to-r from-orange-400/90 to-orange-500/90'
@@ -95,7 +114,9 @@ const Header: React.FC = () => {
                 alt="Logo Text"
                 width={100}
                 height={18}
-                className="w-24 h-4"
+                className={`w-24 h-4 transition-all duration-300 ${
+                  isScrolled ? 'brightness-0' : 'brightness-100'
+                }`}
               />
             </div>
           </div>
@@ -119,7 +140,9 @@ const Header: React.FC = () => {
                       transition-all duration-300 ease-in-out transform flex items-center justify-center
                       ${
                         item.active
-                          ? "text-white bg-orange-600/90 shadow-lg scale-105"
+                          ? isScrolled
+                            ? "text-gray-900 bg-orange-600/90 shadow-lg scale-105"
+                            : "text-white bg-orange-600/90 shadow-lg scale-105"
                           : isScrolled
                           ? "text-gray-900 hover:bg-white/40 hover:text-black hover:scale-102"
                           : "text-white hover:bg-orange-600/50 hover:scale-102"
@@ -209,7 +232,9 @@ const Header: React.FC = () => {
                     transition-all duration-300 ease-in-out transform flex items-center px-4
                     ${
                       item.active
-                        ? "text-white bg-orange-600/90 scale-102 shadow-md"
+                        ? isScrolled
+                          ? "text-gray-900 bg-orange-600/90 scale-102 shadow-md"
+                          : "text-white bg-orange-600/90 scale-102 shadow-md"
                         : isScrolled
                         ? "text-gray-900 hover:bg-white/40 hover:text-black hover:scale-102"
                         : "text-white hover:bg-orange-600/50 hover:scale-102"
