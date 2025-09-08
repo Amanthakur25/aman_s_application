@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import EditText from '@/components/ui/EditText';
 
 const Footer: React.FC = () => {
@@ -103,7 +104,7 @@ const Footer: React.FC = () => {
                   <EditText
                     placeholder="Your email*"
                     value={email}
-                    onChange={setEmail}
+                    onChange={(value: string) => setEmail(value)}
                     type="email"
                     className="w-full"
                     rightIcon={
@@ -168,6 +169,32 @@ const Footer: React.FC = () => {
               <span className="text-sm sm:text-base md:text-[16px] font-normal leading-[19px] text-left text-white font-['Work_Sans']">
                 Refund Policy
               </span>
+              <Image
+                src="/images/img_group_129707.png"
+                alt="Separator"
+                width={5}
+                height={18}
+                className="hidden sm:block w-[4px] h-[14px] sm:w-[5px] sm:h-[18px]"
+              />
+              <Link 
+                href="/terms-conditions"
+                className="text-sm sm:text-base md:text-[16px] font-normal leading-[19px] text-left text-white font-['Work_Sans'] hover:text-orange-200 transition-colors duration-200"
+              >
+                Terms & Conditions
+              </Link>
+              <Image
+                src="/images/img_group_129707.png"
+                alt="Separator"
+                width={5}
+                height={18}
+                className="hidden sm:block w-[4px] h-[14px] sm:w-[5px] sm:h-[18px]"
+              />
+              <Link 
+                href="/privacy-policy"
+                className="text-sm sm:text-base md:text-[16px] font-normal leading-[19px] text-left text-white font-['Work_Sans'] hover:text-orange-200 transition-colors duration-200"
+              >
+                Privacy Policy
+              </Link>
             </div>
 
             {/* Payment Methods */}

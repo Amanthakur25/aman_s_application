@@ -10,6 +10,8 @@ export const ROUTES = {
   SHOP: '/shop',
   NEWS: '/news',
   PAGES: '/pages',
+  PRIVACY_POLICY: '/privacy-policy',
+  TERMS_CONDITIONS: '/terms-conditions',
 } as const;
 
 export const API_ENDPOINTS = {
