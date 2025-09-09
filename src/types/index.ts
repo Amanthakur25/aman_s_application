@@ -79,6 +79,155 @@ export interface TokenResponse {
   token_type: string;
 }
 
+// Admin Dashboard Types
+export interface AdminStats {
+  totalUsers: number;
+  totalPujas: number;
+  totalEarnings: number;
+  totalOrders: number;
+  monthlyGrowth: {
+    users: number;
+    pujas: number;
+    earnings: number;
+    orders: number;
+  };
+}
+
+export interface PujaFormData {
+  // Puja Section
+  pujaName: string;
+  subHeading: string;
+  about: string;
+  date: string;
+  time: string;
+  pujaImages: string[];
+  
+  // Temple Section
+  templeImage: string;
+  templeAddress: string;
+  templeDescription: string;
+  
+  // Puja Benefits (4 benefits with titles and descriptions)
+  benefits: {
+    title: string;
+    description: string;
+  }[];
+  
+  // Plan Details
+  selectedPlanIds: string[]; // Changed to array for multi-select
+  
+  // Prasad
+  prasadPrice: number;
+  prasadStatus: boolean;
+  
+  // Dakshina
+  dakshinaPrices: string; // Changed to string for comma-separated values
+  dakshinaPricesUSD: string; // Changed to string for comma-separated values
+  dakshinaStatus: boolean;
+  
+  // Manokamna Parchi
+  manokamanaPrices: string; // Changed to string for comma-separated values
+  manokamanaPricesUSD: string; // Changed to string for comma-separated values
+  manokamnaStatus: boolean;
+  
+  // General
+  category: string;
+  isActive: boolean;
+  isFeatured: boolean;
+}
+
+export interface ChawadaItem {
+  id: string;
+  name: string;
+  description: string;
+  price: number;
+  image: string;
+  category: string;
+  inStock: boolean;
+  quantity: number;
+}
+
+export interface ChawadaFormData {
+  name: string;
+  price: number;
+  image: string;
+  description: string;
+  isActive: boolean;
+}
+
+export interface ProductFormData {
+  name: string;
+  price: number;
+  image: string;
+  description: string;
+  isActive: boolean;
+}
+
+export interface Product {
+  id: string;
+  name: string;
+  price: number;
+  image: string;
+  description: string;
+  category: string;
+  inStock: boolean;
+  quantity: number;
+  isActive: boolean;
+  createdDate: string;
+}
+
+export interface AdminUser {
+  id: string;
+  name: string;
+  email: string;
+  mobile: string;
+  role: 'user' | 'admin' | 'moderator';
+  isActive: boolean;
+  joinedDate: string;
+  totalOrders: number;
+  totalSpent: number;
+}
+
+export interface ContentUpload {
+  id: string;
+  title: string;
+  type: 'video' | 'image' | 'document' | 'certificate';
+  url: string;
+  category: string;
+  uploadDate: string;
+  size: string;
+}
+
+export interface PlanFormData {
+  name: string;
+  price: number;
+  image: string;
+  category: 'Normal' | 'VIP';
+  description: {
+    feature1: string;
+    feature2: string;
+    feature3: string;
+    feature4: string;
+  };
+  isActive: boolean;
+}
+
+export interface Plan {
+  id: string;
+  name: string;
+  price: number;
+  image: string;
+  category: 'Normal' | 'VIP';
+  description: {
+    feature1: string;
+    feature2: string;
+    feature3: string;
+    feature4: string;
+  };
+  isActive: boolean;
+  createdDate: string;
+}
+
 // User Dashboard Types
 export interface UserPuja {
   id: string;

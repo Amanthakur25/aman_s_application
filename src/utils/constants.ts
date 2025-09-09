@@ -5,6 +5,11 @@ export const APP_DESCRIPTION = 'पूजा एवं ज्योतिष स
 export const ROUTES = {
   HOME: '/',
   ADMIN: '/admin',
+  ADMIN_PUJAS: '/admin/pujas',
+  ADMIN_USERS: '/admin/users', 
+  ADMIN_ORDERS: '/admin/orders',
+  ADMIN_CONTENT: '/admin/content',
+  ADMIN_CHAWADA: '/admin/chawada',
   ADD_PUJA: '/admin/add-puja',
   DASHBOARD: '/dashboard',
   HOROSCOPE: '/horoscope',
