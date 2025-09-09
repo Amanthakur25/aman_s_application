@@ -12,6 +12,7 @@ const Header: React.FC = () => {
   const pathname = usePathname();
   const dispatch = useAppDispatch();
   const { isLoginModalOpen, isMobileMenuOpen } = useAppSelector((state) => state.ui);
+  const { user } = useAppSelector((state) => state.auth);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const hamburgerRef = useRef<HTMLButtonElement>(null);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -158,31 +159,64 @@ const Header: React.FC = () => {
 
           {/* Right Section */}
           <div className="flex items-center gap-4">
-            {/* Login Button */}
-            <button
-              className={`hidden sm:flex items-center gap-2 font-medium px-4 py-2 rounded-full hover:shadow-lg hover:scale-105 transition-all duration-300 font-['Work_Sans'] uppercase text-sm font-bold ${
-                isScrolled
-                  ? 'bg-white/80 backdrop-blur-md border border-white/60 hover:bg-white/90 text-gray-900'
-                  : 'bg-gradient-to-r from-orange-400/90 to-orange-500/90 hover:from-orange-500 hover:to-orange-600 text-white'
-              }`}
-              onClick={() => dispatch(setLoginModalOpen(true))}
-            >
-              <Image
-                src="/images/img_vector.svg"
-                alt="Login Icon"
-                width={12}
-                height={12}
-                className="w-3 h-3"
-              />
-              Login
-              <Image
-                src="/images/img_vector.svg"
-                alt="Arrow"
-                width={12}
-                height={12}
-                className="w-3 h-3"
-              />
-            </button>
+            {/* User Profile or Login Button */}
+            {/* TEMPORARY: Always show user profile for testing */}
+            {true ? (
+              /* User Profile Section */
+              <div className="flex items-center gap-3">
+                <button
+                  onClick={() => router.push('/dashboard')}
+                  className={`hidden sm:flex items-center gap-3 font-medium px-4 py-2 rounded-full hover:shadow-lg hover:scale-105 transition-all duration-300 ${
+                    isScrolled
+                      ? 'bg-white/80 backdrop-blur-md border border-white/60 hover:bg-white/90 text-gray-900'
+                      : 'bg-gradient-to-r from-orange-400/90 to-orange-500/90 hover:from-orange-500 hover:to-orange-600 text-white'
+                  }`}
+                >
+                  <div className="w-6 h-6 rounded-full bg-gradient-to-r from-orange-400 to-orange-500 flex items-center justify-center text-white text-xs font-bold">
+                    {(user?.name || 'Test User')?.charAt(0)?.toUpperCase() || 'U'}
+                  </div>
+                  <span className="text-sm font-['Work_Sans'] capitalize">{user?.name || 'Test User'}</span>
+                </button>
+                <button
+                  onClick={() => router.push('/dashboard')}
+                  className={`sm:hidden p-2 rounded-full hover:scale-105 transition-all duration-300 ${
+                    isScrolled
+                      ? 'bg-white/80 backdrop-blur-md border border-white/60 hover:bg-white/90 text-gray-900'
+                      : 'bg-gradient-to-r from-orange-400/90 to-orange-500/90 hover:bg-orange-600/80 text-white'
+                  }`}
+                >
+                  <div className="w-6 h-6 rounded-full bg-gradient-to-r from-orange-400 to-orange-500 flex items-center justify-center text-white text-xs font-bold">
+                    {(user?.name || 'Test User')?.charAt(0)?.toUpperCase() || 'U'}
+                  </div>
+                </button>
+              </div>
+            ) : (
+              /* Login Button */
+              <button
+                className={`hidden sm:flex items-center gap-2 font-medium px-4 py-2 rounded-full hover:shadow-lg hover:scale-105 transition-all duration-300 font-['Work_Sans'] uppercase text-sm font-bold ${
+                  isScrolled
+                    ? 'bg-white/80 backdrop-blur-md border border-white/60 hover:bg-white/90 text-gray-900'
+                    : 'bg-gradient-to-r from-orange-400/90 to-orange-500/90 hover:from-orange-500 hover:to-orange-600 text-white'
+                }`}
+                onClick={() => dispatch(setLoginModalOpen(true))}
+              >
+                <Image
+                  src="/images/img_vector.svg"
+                  alt="Login Icon"
+                  width={12}
+                  height={12}
+                  className="w-3 h-3"
+                />
+                Login
+                <Image
+                  src="/images/img_vector.svg"
+                  alt="Arrow"
+                  width={12}
+                  height={12}
+                  className="w-3 h-3"
+                />
+              </button>
+            )}
 
             {/* Mobile Menu Button */}
             <button
@@ -245,30 +279,49 @@ const Header: React.FC = () => {
                 </button>
               </div>
             ))}
-            <button
-              className={`flex items-center justify-center gap-2 font-medium px-4 py-2 rounded-full mt-2 font-['Work_Sans'] uppercase text-sm hover:shadow-lg hover:scale-105 transition-all duration-300 font-bold ${
-                isScrolled
-                  ? 'bg-white/80 backdrop-blur-md border border-white/60 hover:bg-white/90 text-gray-900'
-                  : 'bg-gradient-to-r from-orange-400/90 to-orange-500/90 hover:from-orange-500 hover:to-orange-600 text-white'
-              }`}
-              onClick={() => dispatch(setLoginModalOpen(true))}
-            >
-              <Image
-                src="/images/img_vector.svg"
-                alt="Login Icon"
-                width={12}
-                height={12}
-                className="w-3 h-3"
-              />
-              Login
-              <Image
-                src="/images/img_vector.svg"
-                alt="Arrow"
-                width={12}
-                height={12}
-                className="w-3 h-3"
-              />
-            </button>
+            
+            {/* Mobile Login/Profile Button */}
+            {/* TEMPORARY: Always show user profile for testing */}
+            {true ? (
+              <button
+                onClick={() => router.push('/dashboard')}
+                className={`flex items-center gap-3 font-medium px-4 py-2 rounded-full mt-2 font-['Work_Sans'] text-sm hover:shadow-lg hover:scale-105 transition-all duration-300 ${
+                  isScrolled
+                    ? 'bg-white/80 backdrop-blur-md border border-white/60 hover:bg-white/90 text-gray-900'
+                    : 'bg-gradient-to-r from-orange-400/90 to-orange-500/90 hover:from-orange-500 hover:to-orange-600 text-white'
+                }`}
+              >
+                <div className="w-6 h-6 rounded-full bg-gradient-to-r from-orange-400 to-orange-500 flex items-center justify-center text-white text-xs font-bold">
+                  {(user?.name || 'Test User')?.charAt(0)?.toUpperCase() || 'U'}
+                </div>
+                <span className="capitalize">{user?.name || 'Test User'}</span>
+              </button>
+            ) : (
+              <button
+                className={`flex items-center justify-center gap-2 font-medium px-4 py-2 rounded-full mt-2 font-['Work_Sans'] uppercase text-sm hover:shadow-lg hover:scale-105 transition-all duration-300 font-bold ${
+                  isScrolled
+                    ? 'bg-white/80 backdrop-blur-md border border-white/60 hover:bg-white/90 text-gray-900'
+                    : 'bg-gradient-to-r from-orange-400/90 to-orange-500/90 hover:from-orange-500 hover:to-orange-600 text-white'
+                }`}
+                onClick={() => dispatch(setLoginModalOpen(true))}
+              >
+                <Image
+                  src="/images/img_vector.svg"
+                  alt="Login Icon"
+                  width={12}
+                  height={12}
+                  className="w-3 h-3"
+                />
+                Login
+                <Image
+                  src="/images/img_vector.svg"
+                  alt="Arrow"
+                  width={12}
+                  height={12}
+                  className="w-3 h-3"
+                />
+              </button>
+            )}
           </div>
         </nav>
 

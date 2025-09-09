@@ -1,12 +1,14 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import { useAppSelector, useAppDispatch } from '@/hooks';
 import { setLoginModalOpen } from '@/store/slices/uiSlice';
 import { loginStart, loginSuccess, loginFailure, signupUser } from '@/store/slices/authSlice';
 import { apiService } from '@/services/api';
 
 const LoginModal: React.FC = () => {
+  const router = useRouter();
   const dispatch = useAppDispatch();
   const { isLoginModalOpen } = useAppSelector((state) => state.ui);
   const { isLoading, error } = useAppSelector((state) => state.auth);
@@ -63,6 +65,12 @@ const LoginModal: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
+    // TEMPORARY: Comment out login logic and redirect directly to dashboard
+    handleClose();
+    router.push('/dashboard');
+    
+    // TODO: Uncomment below when ready to implement actual authentication
+    /*
     if (!validateForm()) {
       return;
     }
@@ -83,13 +91,25 @@ const LoginModal: React.FC = () => {
         }
         // Add isAuthenticated flag to the user object
         dispatch(loginSuccess({...user, isAuthenticated: true}));
+        
+        // Close modal and redirect to dashboard
+        handleClose();
+        router.push('/dashboard');
       } catch (error) {
         dispatch(loginFailure(error instanceof Error ? error.message : 'Login failed. Please try again.'));
       }
     } else {
       // Signup process
-      dispatch(signupUser({ name, email, mobile, password }));
+      try {
+        const result = await dispatch(signupUser({ name, email, mobile, password })).unwrap();
+        // After successful signup, redirect to dashboard
+        handleClose();
+        router.push('/dashboard');
+      } catch (error) {
+        // Error is already handled in the async thunk
+      }
     }
+    */
   };
 
   if (!isLoginModalOpen) return null;

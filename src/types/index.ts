@@ -78,3 +78,52 @@ export interface TokenResponse {
   access_token: string;
   token_type: string;
 }
+
+// User Dashboard Types
+export interface UserPuja {
+  id: string;
+  title: string;
+  temple: string;
+  date: string;
+  time: string;
+  status: 'completed' | 'upcoming' | 'processing';
+  amount: number;
+  image: string;
+  videoUrl?: string;
+  certificateUrl?: string;
+}
+
+export interface UserOrder {
+  id: string;
+  orderNumber: string;
+  date: string;
+  items: Array<{
+    name: string;
+    quantity: number;
+    price: number;
+    image: string;
+  }>;
+  total: number;
+  status: 'delivered' | 'shipped' | 'processing' | 'cancelled';
+  trackingNumber?: string;
+}
+
+export interface UserProfile {
+  personalInfo: {
+    name: string;
+    email: string;
+    mobile: string;
+    dateOfBirth?: string;
+    address?: string;
+    city?: string;
+    state?: string;
+    country?: string;
+    pincode?: string;
+  };
+  spiritualInfo: {
+    favoriteDeities: string[];
+    birthTime?: string;
+    birthPlace?: string;
+    gotra?: string;
+  };
+}

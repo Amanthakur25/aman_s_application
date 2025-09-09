@@ -6,6 +6,7 @@ export const ROUTES = {
   HOME: '/',
   ADMIN: '/admin',
   ADD_PUJA: '/admin/add-puja',
+  DASHBOARD: '/dashboard',
   HOROSCOPE: '/horoscope',
   SHOP: '/shop',
   NEWS: '/news',
