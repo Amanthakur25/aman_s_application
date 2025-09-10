@@ -1,10 +1,12 @@
 'use client';
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import Button from '@/components/ui/Button';
 import PujaCard from '@/components/cards/PujaCard';
 
 interface PujaCardProps {
+  id?: string;
   image: string;
   title: string;
   temple: string;
@@ -57,17 +59,19 @@ const PujaSection: React.FC<PujaSectionProps> = ({ pujaCards }) => (
           </div>
           <div className="flex flex-col lg:flex-row gap-[30px] sm:gap-[35px] md:gap-[40px] w-full mt-[5px] sm:mt-[6px] md:mt-[6px]">
             {pujaCards.map((card, index) => (
-              <PujaCard key={index} {...card} />
+              <PujaCard key={card.id || index} {...card} />
             ))}
           </div>
           <div className="flex justify-center items-center w-full px-[42px] sm:px-[49px] md:px-[56px] mr-[62px] sm:mr-[72px] md:mr-[82px] mb-[38px] sm:mb-[44px] md:mb-[50px] ml-[62px] sm:ml-[72px] md:ml-[82px] mt-[38px] sm:mt-[44px] md:mt-[50px]">
-            <Button
-              variant="primary"
-              size="md"
-              className="text-[12px] sm:text-[13px] md:text-[14px] font-normal leading-[14px] sm:leading-[15px] md:leading-[17px] text-center capitalize text-white bg-[linear-gradient(0deg,#f4aa36_0%,_#f37335_100%)] rounded-[22px] px-[25px] sm:px-[30px] md:px-[34px] py-[9px] sm:py-[11px] md:py-[12px] font-['Lato']"
-            >
-              See all pujas
-            </Button>
+            <Link href="/pujas">
+              <Button
+                variant="primary"
+                size="md"
+                className="text-[12px] sm:text-[13px] md:text-[14px] font-normal leading-[14px] sm:leading-[15px] md:leading-[17px] text-center capitalize text-white bg-[linear-gradient(0deg,#f4aa36_0%,_#f37335_100%)] rounded-[22px] px-[25px] sm:px-[30px] md:px-[34px] py-[9px] sm:py-[11px] md:py-[12px] font-['Lato'] hover:shadow-lg transition-shadow duration-200"
+              >
+                See all pujas
+              </Button>
+            </Link>
           </div>
         </div>
       </div>

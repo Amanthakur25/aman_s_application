@@ -12,6 +12,7 @@ import TestimonialsSection from '@/components/sections/TestimonialsSection';
 import ArticlesSection from '@/components/sections/ArticlesSection';
 import DownloadAppSection from '@/components/sections/DownloadAppSection';
 import { PujaCard, HoroscopeCard, ProcessStep, Testimonial, Article } from '@/types';
+import { getHoroscopeCards } from '@/utils/horoscope';
 
 export default function HomePage() {
   const pujaCards: PujaCard[] = [
@@ -45,20 +46,7 @@ export default function HomePage() {
     }
   ];
 
-  const horoscopeCards: HoroscopeCard[] = [
-    { id: '1', icon: "/images/img_vector_black_900_01.svg", name: "Aries", dateRange: "Mar 21 - Apr 19" },
-    { id: '2', icon: "/images/img_vector_black_900_01_34x36.svg", name: "Taurus", dateRange: "Mar 21 - Apr 19" },
-    { id: '3', icon: "/images/img_vector_black_900_01_34x32.svg", name: "Gemini", dateRange: "Mar 21 - Apr 19" },
-    { id: '4', icon: "/images/img_vector_black_900_01_36x26.svg", name: "Cancer", dateRange: "Mar 21 - Apr 19" },
-    { id: '5', icon: "/images/img_vector_black_900_01_34x40.png", name: "Leo", dateRange: "Mar 21 - Apr 19" },
-    { id: '6', icon: "/images/img_vector_black_900_01_34x26.svg", name: "Virgo", dateRange: "Mar 21 - Apr 19" },
-    { id: '7', icon: "/images/img_vector_black_900_01_22x36.svg", name: "Libra", dateRange: "Mar 21 - Apr 19" },
-    { id: '8', icon: "/images/img_component_2.png", name: "Scorpio", dateRange: "Mar 21 - Apr 19" },
-    { id: '9', icon: "/images/img_vector_black_900_01_34x30.svg", name: "Sagittairus", dateRange: "Mar 21 - Apr 19" },
-    { id: '10', icon: "/images/img_vector_34x32.svg", name: "Capricorn", dateRange: "Mar 21 - Apr 19" },
-    { id: '11', icon: "/images/img_vector_black_900_01_34x28.svg", name: "Aquarius", dateRange: "Mar 21 - Apr 19" },
-    { id: '12', icon: "/images/img_vector_black_900_01_26x36.svg", name: "Pisces", dateRange: "Mar 21 - Apr 19" }
-  ];
+  const horoscopeCards: HoroscopeCard[] = getHoroscopeCards();
 
   const processSteps: ProcessStep[] = [
     {

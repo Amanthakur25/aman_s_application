@@ -62,10 +62,18 @@ const Footer: React.FC = () => {
                   Horoscope
                 </h3>
                 <div className="text-sm sm:text-base md:text-[16px] font-normal leading-[34px] sm:leading-[40px] md:leading-[45px] text-left text-white font-['Mulish']">
-                  <p>Daily Horoscpe</p>
-                  <p>Weekly Horoscpe</p>
-                  <p>Monthly Horoscope</p>
-                  <p>Yearly Horoscope</p>
+                  <Link href="/daily-horoscope" className="block hover:text-orange-200 transition-colors duration-200">
+                    Daily Horoscope
+                  </Link>
+                  <Link href="/weekly-horoscope" className="block hover:text-orange-200 transition-colors duration-200">
+                    Weekly Horoscope
+                  </Link>
+                  <Link href="/monthly-horoscope" className="block hover:text-orange-200 transition-colors duration-200">
+                    Monthly Horoscope
+                  </Link>
+                  <Link href="/yearly-horoscope" className="block hover:text-orange-200 transition-colors duration-200">
+                    Yearly Horoscope
+                  </Link>
                 </div>
               </div>
 
@@ -75,10 +83,18 @@ const Footer: React.FC = () => {
                   Useful links
                 </h3>
                 <div className="text-sm sm:text-base md:text-[16px] font-normal leading-[34px] sm:leading-[40px] md:leading-[45px] text-left text-white font-['Mulish']">
-                  <p>Home</p>
-                  <p>Our Services</p>
-                  <p>About Us</p>
-                  <p>Shop</p>
+                  <Link href="/" className="block hover:text-orange-200 transition-colors duration-200">
+                    Home
+                  </Link>
+                  <Link href="/our-services" className="block hover:text-orange-200 transition-colors duration-200">
+                    Our Services
+                  </Link>
+                  <Link href="/about" className="block hover:text-orange-200 transition-colors duration-200">
+                    About Us
+                  </Link>
+                  <Link href="/store" className="block hover:text-orange-200 transition-colors duration-200">
+                    Shop
+                  </Link>
                 </div>
               </div>
 
@@ -88,10 +104,18 @@ const Footer: React.FC = () => {
                   Support
                 </h3>
                 <div className="text-sm sm:text-base md:text-[16px] font-normal leading-[34px] sm:leading-[40px] md:leading-[45px] text-left text-white font-['Mulish']">
-                  <p>Community</p>
-                  <p>Blog</p>
-                  <p>Forums</p>
-                  <p>Meetups</p>
+                  <Link href="/community" className="block hover:text-orange-200 transition-colors duration-200">
+                    Community
+                  </Link>
+                  <Link href="/blog" className="block hover:text-orange-200 transition-colors duration-200">
+                    Blog
+                  </Link>
+                  <Link href="/forums" className="block hover:text-orange-200 transition-colors duration-200">
+                    Forums
+                  </Link>
+                  <Link href="/meetups" className="block hover:text-orange-200 transition-colors duration-200">
+                    Meetups
+                  </Link>
                 </div>
               </div>
 
@@ -146,9 +170,12 @@ const Footer: React.FC = () => {
             
             {/* Footer Links */}
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-6 justify-center items-center self-end lg:self-auto w-auto">
-              <span className="text-sm sm:text-base md:text-[16px] font-normal leading-[19px] text-left text-white font-['Work_Sans']">
+              <Link 
+                href="/orders-payments"
+                className="text-sm sm:text-base md:text-[16px] font-normal leading-[19px] text-left text-white font-['Work_Sans'] hover:text-orange-200 transition-colors duration-200"
+              >
                 Orders & Payments
-              </span>
+              </Link>
               <Image
                 src="/images/img_group_129707.png"
                 alt="Separator"
@@ -156,9 +183,12 @@ const Footer: React.FC = () => {
                 height={18}
                 className="hidden sm:block w-[4px] h-[14px] sm:w-[5px] sm:h-[18px]"
               />
-              <span className="text-sm sm:text-base md:text-[16px] font-normal leading-[19px] text-left text-white font-['Work_Sans']">
+              <Link 
+                href="/returns-exchange"
+                className="text-sm sm:text-base md:text-[16px] font-normal leading-[19px] text-left text-white font-['Work_Sans'] hover:text-orange-200 transition-colors duration-200"
+              >
                 Returns & Exchange
-              </span>
+              </Link>
               <Image
                 src="/images/img_group_129707.png"
                 alt="Separator"
@@ -166,9 +196,12 @@ const Footer: React.FC = () => {
                 height={18}
                 className="hidden sm:block w-[4px] h-[14px] sm:w-[5px] sm:h-[18px]"
               />
-              <span className="text-sm sm:text-base md:text-[16px] font-normal leading-[19px] text-left text-white font-['Work_Sans']">
+              <Link 
+                href="/refund-policy"
+                className="text-sm sm:text-base md:text-[16px] font-normal leading-[19px] text-left text-white font-['Work_Sans'] hover:text-orange-200 transition-colors duration-200"
+              >
                 Refund Policy
-              </span>
+              </Link>
               <Image
                 src="/images/img_group_129707.png"
                 alt="Separator"

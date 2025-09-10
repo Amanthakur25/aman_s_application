@@ -4,6 +4,7 @@ import Image from 'next/image';
 import HoroscopeCard from '@/components/cards/HoroscopeCard';
 
 interface HoroscopeCardProps {
+  id?: string;
   icon: string;
   name: string;
   dateRange: string;

@@ -9,7 +9,7 @@ interface ProcessStepProps {
   location: string;
   datetime: string;
   isHighlighted?: boolean;
-  imageSrc: string; // Added imageSrc to the interface
+  imageSrc?: string; // Made optional since it's auto-assigned
 }
 
 interface ProcessSectionProps {

@@ -17,6 +17,8 @@ const Header: React.FC = () => {
   const hamburgerRef = useRef<HTMLButtonElement>(null);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeMenuItem, setActiveMenuItem] = useState('Home');
+  const [showMoreDropdown, setShowMoreDropdown] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   // Handle scroll effect for glassmorphism
   useEffect(() => {
@@ -43,32 +45,54 @@ const Header: React.FC = () => {
       ) {
         dispatch(setMobileMenuOpen(false));
       }
+      
+      // Close dropdown when clicking outside
+      if (
+        showMoreDropdown &&
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setShowMoreDropdown(false);
+      }
     };
 
     document.addEventListener('mousedown', handleClickOutside);
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [isMobileMenuOpen, dispatch]);
+  }, [isMobileMenuOpen, showMoreDropdown, dispatch]);
 
   // Update active menu item based on pathname
   useEffect(() => {
     if (pathname === '/') {
       setActiveMenuItem('Home');
-    } else if (pathname?.startsWith('/puja')) {
+    } else if (pathname?.startsWith('/puja') || pathname?.startsWith('/pujas')) {
       setActiveMenuItem('Puja');
     } else if (pathname?.startsWith('/horoscope')) {
       setActiveMenuItem('Horoscope');
     } else if (pathname?.startsWith('/store')) {
       setActiveMenuItem('Store');
-    } else if (pathname?.startsWith('/about')) {
+    } else if (pathname?.startsWith('/about') || pathname?.startsWith('/panchang') || pathname?.startsWith('/blog') || pathname?.startsWith('/free-kundli') || pathname?.startsWith('/match-making') || pathname?.startsWith('/numerology') || pathname?.startsWith('/contact') || pathname?.startsWith('/ask-question') || pathname?.startsWith('/astro-watch') || pathname?.startsWith('/manglik-dosh') || pathname?.startsWith('/kaalsarp-dosh') || pathname?.startsWith('/astro-tools') || pathname?.startsWith('/career')) {
       setActiveMenuItem('More');
     }
   }, [pathname]);
 
+  // Dropdown menu items - optimized and merged
+  const moreMenuItems = [
+    { name: "Panchang", href: "/panchang", icon: "📅" },
+    { name: "Blog", href: "/blog", icon: "📚" },
+    { name: "Free Kundli", href: "/free-kundli", icon: "🔮" },
+    { name: "Match Making", href: "/match-making", icon: "💕" },
+    { name: "Numerology", href: "/numerology", icon: "🔢" },
+    { name: "Astro Tools", href: "/astro-tools", icon: "🛠️" },
+    { name: "Ask Question", href: "/ask-question", icon: "❓" },
+    { name: "Career", href: "/career", icon: "💼" },
+    { name: "Contact", href: "/contact", icon: "📞" }
+  ];
+
   const menuItems = [
     { name: "Home", href: "/", active: activeMenuItem === "Home" },
-    { name: "Puja", href: "/puja", active: activeMenuItem === "Puja" },
+    { name: "Puja", href: "/pujas", active: activeMenuItem === "Puja" },
     { name: "Horoscope", href: "/horoscope", active: activeMenuItem === "Horoscope" },
     { name: "Store", href: "/store", active: activeMenuItem === "Store" },
     { name: "More", href: "/about", active: activeMenuItem === "More" },
@@ -78,21 +102,19 @@ const Header: React.FC = () => {
     // Update active state immediately
     setActiveMenuItem(name);
     
-    if (pathname === "/" && (name === "Puja" || name === "Horoscope")) {
-      const sectionId = name === "Puja" ? "puja-section" : "horoscope-section";
-      const section = document.getElementById(sectionId);
-      if (section) {
-        section.scrollIntoView({ behavior: "smooth", block: "start" });
-      } else {
-        router.push(href);
-      }
-    } else {
-      router.push(href);
-    }
+    // Close dropdown if open
+    setShowMoreDropdown(false);
+    
+    // Navigate to the page for all menu items
+    router.push(href);
 
     if (isMobileMenuOpen) {
       dispatch(setMobileMenuOpen(false));
     }
+  };
+
+  const handleMoreClick = () => {
+    setShowMoreDropdown(!showMoreDropdown);
   };
 
   return (
@@ -129,7 +151,7 @@ const Header: React.FC = () => {
               : 'bg-gradient-to-r from-orange-400/90 to-orange-500/90 backdrop-blur-sm'
           }`}>
             <div className="flex items-center gap-2">
-              {menuItems.map((item, index) => (
+              {menuItems.slice(0, 4).map((item, index) => (
                 <div
                   key={index}
                   className="relative w-20 h-8 flex items-center justify-center"
@@ -154,6 +176,62 @@ const Header: React.FC = () => {
                   </button>
                 </div>
               ))}
+              
+              {/* More Dropdown */}
+              <div className="relative" ref={dropdownRef}>
+                <div className="relative w-20 h-8 flex items-center justify-center">
+                  <button
+                    onClick={handleMoreClick}
+                    className={`
+                      absolute inset-0 w-full h-full rounded-full text-sm font-medium uppercase font-['Work_Sans'] 
+                      transition-all duration-300 ease-in-out transform flex items-center justify-center
+                      ${
+                        activeMenuItem === 'More'
+                          ? isScrolled
+                            ? "text-gray-900 bg-orange-600/90 shadow-lg scale-105"
+                            : "text-white bg-orange-600/90 shadow-lg scale-105"
+                          : isScrolled
+                          ? "text-gray-900 hover:bg-white/40 hover:text-black hover:scale-102"
+                          : "text-white hover:bg-orange-600/50 hover:scale-102"
+                      }
+                    `}
+                  >
+                    More
+                    <svg 
+                      className={`w-3 h-3 ml-1 transition-transform duration-300 ${
+                        showMoreDropdown ? 'rotate-180' : ''
+                      }`} 
+                      fill="none" 
+                      stroke="currentColor" 
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+                </div>
+                
+                {/* Dropdown Menu */}
+                {showMoreDropdown && (
+                  <div className={`absolute top-12 right-0 w-52 rounded-xl shadow-2xl border overflow-hidden z-50 transition-all duration-300 ${
+                    isScrolled
+                      ? 'bg-white/95 backdrop-blur-lg border-white/60'
+                      : 'bg-white/95 backdrop-blur-lg border-orange-200/60'
+                  }`}>
+                    <div className="py-1">
+                      {moreMenuItems.map((item, index) => (
+                        <button
+                          key={index}
+                          onClick={() => handleMenuItemClick(item.href, item.name)}
+                          className="w-full px-3 py-2 text-left hover:bg-orange-50 transition-all duration-200 flex items-center gap-2 text-gray-700 hover:text-orange-600 text-sm"
+                        >
+                          <span className="text-base">{item.icon}</span>
+                          <span className="font-medium">{item.name}</span>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
           </nav>
 
@@ -272,7 +350,7 @@ const Header: React.FC = () => {
           }`}
         >
           <div className="flex flex-col space-y-2">
-            {menuItems.map((item, index) => (
+            {menuItems.slice(0, 4).map((item, index) => (
               <div key={index} className="relative w-full h-10 flex items-center">
                 <button
                   onClick={() => handleMenuItemClick(item.href, item.name)}
@@ -294,6 +372,32 @@ const Header: React.FC = () => {
                 </button>
               </div>
             ))}
+            
+            {/* Mobile More Section */}
+            <div className="border-t border-white/20 pt-2 mt-2">
+              <div className="text-sm font-bold text-gray-300 px-4 py-2 uppercase tracking-wide">
+                More Options
+              </div>
+              {moreMenuItems.map((item, index) => (
+                <div key={index} className="relative w-full h-10 flex items-center">
+                  <button
+                    onClick={() => handleMenuItemClick(item.href, item.name)}
+                    className={`
+                      absolute inset-0 w-full h-full rounded-xl text-sm font-medium text-left font-['Work_Sans'] 
+                      transition-all duration-300 ease-in-out transform flex items-center px-4 gap-3
+                      ${
+                        isScrolled
+                          ? "text-gray-700 hover:bg-white/40 hover:text-black hover:scale-102"
+                          : "text-white/90 hover:bg-orange-600/50 hover:scale-102"
+                      }
+                    `}
+                  >
+                    <span className="text-base">{item.icon}</span>
+                    {item.name}
+                  </button>
+                </div>
+              ))}
+            </div>
             
             {/* Mobile Login/Profile Button */}
             {/* TEMPORARY: Always show user profile for testing */}

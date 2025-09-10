@@ -25,6 +25,7 @@ export interface ProcessStep {
   location: string;
   datetime: string;
   isHighlighted?: boolean;
+  imageSrc?: string;
 }
 
 export interface Testimonial {
@@ -240,6 +241,38 @@ export interface UserPuja {
   image: string;
   videoUrl?: string;
   certificateUrl?: string;
+}
+
+// Complete Puja Details Interface
+export interface Puja {
+  id: string;
+  pujaName: string;
+  subHeading: string;
+  about: string;
+  date: string;
+  time: string;
+  pujaImages: string[];
+  templeImage: string;
+  templeAddress: string;
+  templeDescription: string;
+  benefits: {
+    title: string;
+    description: string;
+  }[];
+  selectedPlanIds: string[];
+  prasadPrice: number;
+  prasadStatus: boolean;
+  dakshinaPrices: string;
+  dakshinaPricesUSD: string;
+  dakshinaStatus: boolean;
+  manokamanaPrices: string;
+  manokamanaPricesUSD: string;
+  manokamnaStatus: boolean;
+  category: string;
+  isActive: boolean;
+  isFeatured: boolean;
+  createdDate: string;
+  selectedPlans?: Plan[]; // Populated plans data
 }
 
 export interface UserOrder {
