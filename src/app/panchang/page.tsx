@@ -100,27 +100,27 @@ const PanchangPage: React.FC = () => {
               
               <div className="space-y-6">
                 <div className="p-4 bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl">
-                  <h3 className="font-bold text-gray-700 mb-2">अभिजित मुहूर्त</h3>
+                  <h3 className="font-bold text-gray-700 mb-2 font-['Philosopher']">अभिजित मुहूर्त</h3>
                   <p className="text-green-600 font-medium">12:00 PM - 12:48 PM</p>
                 </div>
                 
                 <div className="p-4 bg-gradient-to-r from-blue-50 to-cyan-50 rounded-2xl">
-                  <h3 className="font-bold text-gray-700 mb-2">अमृत काल</h3>
+                  <h3 className="font-bold text-gray-700 mb-2 font-['Philosopher']">अमृत काल</h3>
                   <p className="text-blue-600 font-medium">6:30 AM - 8:15 AM</p>
                 </div>
                 
                 <div className="p-4 bg-gradient-to-r from-purple-50 to-violet-50 rounded-2xl">
-                  <h3 className="font-bold text-gray-700 mb-2">ब्रह्म मुहूर्त</h3>
+                  <h3 className="font-bold text-gray-700 mb-2 font-['Philosopher']">ब्रह्म मुहूर्त</h3>
                   <p className="text-purple-600 font-medium">4:30 AM - 6:00 AM</p>
                 </div>
                 
                 <div className="p-4 bg-gradient-to-r from-red-50 to-rose-50 rounded-2xl">
-                  <h3 className="font-bold text-gray-700 mb-2">राहु काल</h3>
+                  <h3 className="font-bold text-gray-700 mb-2 font-['Philosopher']">राहु काल</h3>
                   <p className="text-red-600 font-medium">3:30 PM - 5:00 PM</p>
                 </div>
                 
                 <div className="p-4 bg-gradient-to-r from-orange-50 to-amber-50 rounded-2xl">
-                  <h3 className="font-bold text-gray-700 mb-2">गुलिक काल</h3>
+                  <h3 className="font-bold text-gray-700 mb-2 font-['Philosopher']">गुलिक काल</h3>
                   <p className="text-orange-600 font-medium">1:30 PM - 3:00 PM</p>
                 </div>
               </div>
