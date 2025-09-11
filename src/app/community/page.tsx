@@ -7,7 +7,7 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import '../../styles/horoscope-animations.css';
 
-const AboutUsPage: React.FC = () => {
+const CommunityPage: React.FC = () => {
   const router = useRouter();
   const [isVisible, setIsVisible] = useState(false);
 
@@ -20,63 +20,59 @@ const AboutUsPage: React.FC = () => {
     router.push('/');
   };
 
-  // Team members data
-  const teamMembers = [
+  // Community features data
+  const features = [
     {
       id: 1,
-      name: "Acharya Devanand",
-      role: "Chief Astrologer",
-      description: "20+ years of experience in Vedic astrology and spiritual guidance",
-      image: "/images/img_group_8.svg",
+      title: "Spiritual Discussions",
+      description: "Engage in meaningful conversations with fellow seekers on spiritual topics and practices",
+      icon: "🗣️",
       color: "from-orange-400 to-amber-500"
     },
     {
       id: 2,
-      name: "Shanti Priya",
-      role: "Numerology Expert",
-      description: "Specialist in sacred numerology and cosmic vibrations",
-      image: "/images/img_group_8.svg",
+      title: "Expert Q&A",
+      description: "Get your spiritual questions answered by our certified astrologers and guides",
+      icon: "❓",
       color: "from-purple-400 to-indigo-500"
     },
     {
       id: 3,
-      name: "Ravi Shankar",
-      role: "Palm Reading Master",
-      description: "Expert in palmistry and life path analysis",
-      image: "/images/img_group_8.svg",
+      title: "Experience Sharing",
+      description: "Share your spiritual journey and learn from others' experiences",
+      icon: "📖",
       color: "from-blue-400 to-cyan-500"
     },
     {
       id: 4,
-      name: "Anjali Mehta",
-      role: "Tarot Reader",
-      description: "Experienced in tarot card reading and spiritual counseling",
-      image: "/images/img_group_8.svg",
+      title: "Group Meditations",
+      description: "Participate in guided group meditation sessions for collective spiritual growth",
+      icon: "🧘",
       color: "from-rose-400 to-pink-500"
     }
   ];
 
-  // Values data
-  const values = [
+  // Community benefits
+  const benefits = [
     {
-      title: "Authentic Wisdom",
-      description: "Rooted in ancient Vedic traditions passed down through generations",
-      icon: "🕉️"
+      title: "Connect with Like-minded Souls",
+      description: "Find your spiritual community and build meaningful connections",
+      icon: "🤝"
     },
     {
-      title: "Personalized Guidance",
-      description: "Tailored solutions for your unique life journey and challenges",
-      icon: "🎯"
+      title: "Continuous Learning",
+      description: "Expand your spiritual knowledge through shared wisdom and insights",
+      icon: "🧠"
     },
     {
-      title: "Spiritual Integrity",
-      description: "Committed to ethical practices and genuine spiritual growth",
+      title: "Supportive Environment",
+      description: "Experience a safe space for spiritual exploration and growth",
       icon: "🕊️"
     },
     {
-      title: "Confidential Service",
-      description: "Your privacy and personal information are always protected",
-      icon: "🔒"
+      title: "Cultural Exchange",
+      description: "Learn about diverse spiritual traditions and practices from around the world",
+      icon: "🌍"
     }
   ];
 
@@ -137,26 +133,26 @@ const AboutUsPage: React.FC = () => {
                   {/* Sacred Heading with Sanskrit Elements */}
                   <h1 className="text-[48px] sm:text-[56px] md:text-[64px] lg:text-[72px] font-bold leading-[56px] sm:leading-[64px] md:leading-[72px] lg:leading-[80px] font-['Philosopher'] mb-8">
                     <span className="bg-gradient-to-r from-amber-700 via-amber-600 to-orange-600 bg-clip-text text-transparent">
-                      हमारे बारे में
+                      समुदाय
                     </span>
                     <br />
                     <span className="bg-gradient-to-r from-amber-600 via-orange-600 to-amber-700 bg-clip-text text-transparent">
-                      About Us
+                      Spiritual Community
                     </span>
                   </h1>
                   
                   <p className="text-[18px] sm:text-[20px] md:text-[22px] font-normal leading-[28px] sm:leading-[30px] md:leading-[32px] font-['Lato'] max-w-4xl mb-10 text-gray-700 mx-auto">
-                    Discover our sacred journey of spiritual enlightenment and commitment to guiding souls toward cosmic harmony.
+                    Join our vibrant community of spiritual seekers and connect with like-minded souls on the path to enlightenment.
                     <br className="hidden sm:block" />
-                    Rooted in ancient wisdom, dedicated to modern healing.
+                    Share experiences, gain insights, and grow together in wisdom and harmony.
                   </p>
                   
                   {/* Enhanced Traditional CTA Buttons */}
                   <div className="flex flex-col sm:flex-row gap-6 justify-center mb-16">
                     <button className="group relative px-10 py-4 bg-gradient-to-r from-amber-400 to-orange-400 text-white font-bold text-lg rounded-full overflow-hidden transition-all duration-500 hover:scale-105 shadow-lg hover:shadow-xl">
                       <span className="relative z-10 flex items-center justify-center gap-3">
-                        <div className="text-xl">🔯</div>
-                        Discover Our Journey
+                        <div className="text-xl">👥</div>
+                        Join Our Community
                       </span>
                       <div className="absolute inset-0 bg-gradient-to-r from-amber-500 to-orange-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </button>
@@ -178,167 +174,108 @@ const AboutUsPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Story Section */}
+      {/* Features Section */}
       <section className="relative w-full py-[80px] sm:py-[90px] md:py-[100px] px-[42px] sm:px-[49px] md:px-[56px] bg-gradient-to-br from-white/80 to-amber-50/50">
         <div className="w-full max-w-[1440px] mx-auto">
           {/* Section Header */}
           <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <div className="mb-6">
               <span className="inline-block px-6 py-2 bg-gradient-to-r from-amber-100 to-orange-100 text-amber-700 rounded-full text-sm font-semibold mb-4">
-                🌟 Our Sacred Journey
+                🌟 Community Features
               </span>
             </div>
             <h2 className="text-[42px] sm:text-[48px] md:text-[56px] font-bold leading-[48px] sm:leading-[54px] md:leading-[64px] text-gray-800 font-['Philosopher'] mb-6">
               <span className="bg-gradient-to-r from-amber-600 via-orange-600 to-yellow-600 bg-clip-text text-transparent">
-                Ancient Wisdom, Modern Mission
+                Connect, Share, and Grow
               </span>
             </h2>
             <p className="text-[18px] sm:text-[20px] md:text-[22px] font-normal leading-[28px] sm:leading-[30px] md:leading-[32px] text-gray-600 font-['Lato'] max-w-3xl mx-auto">
-              For over two decades, we have been dedicated to sharing the profound wisdom of Vedic traditions with seekers worldwide.
+              Our community platform offers diverse ways to engage with fellow spiritual seekers and deepen your journey
             </p>
           </div>
 
-          {/* Story Content */}
-          <div className={`flex flex-col lg:flex-row gap-12 items-center transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <div className="w-full lg:w-1/2">
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-                <div className="absolute inset-0 bg-gradient-to-br from-amber-400 to-orange-500 opacity-20"></div>
-                <Image 
-                  src="/images/img__4.png" 
-                  alt="Our Spiritual Journey" 
-                  width={600} 
-                  height={400} 
-                  className="w-full h-auto object-cover"
-                />
-              </div>
-            </div>
-            <div className="w-full lg:w-1/2">
-              <h3 className="text-[32px] sm:text-[36px] md:text-[40px] font-bold text-gray-800 font-['Philosopher'] mb-6">
-                Guiding Souls Since 2003
-              </h3>
-              <p className="text-[16px] sm:text-[18px] md:text-[20px] text-gray-600 font-['Lato'] mb-6 leading-relaxed">
-                Founded by a lineage of spiritual practitioners, Global Puja began as a small ashram in the foothills of the Himalayas. Our founder, Acharya Devanand, dedicated his life to mastering the ancient arts of Vedic astrology, palmistry, and numerology.
-              </p>
-              <p className="text-[16px] sm:text-[18px] md:text-[20px] text-gray-600 font-['Lato'] mb-6 leading-relaxed">
-                Today, we have evolved into a global spiritual guidance center, serving thousands of seekers across continents. Our mission remains unchanged: to illuminate paths with cosmic wisdom and empower individuals to realize their highest potential.
-              </p>
-              <div className="flex items-center gap-4 mt-8">
-                <div className="text-4xl">🕉️</div>
-                <p className="text-[18px] text-gray-700 font-['Philosopher'] font-bold">
-                  "Knowledge is the light that dispels darkness"
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Values Section */}
-      <section className="relative w-full py-[80px] sm:py-[90px] md:py-[100px] px-[42px] sm:px-[49px] md:px-[56px] bg-gradient-to-br from-orange-50/50 to-amber-50/50">
-        <div className="w-full max-w-[1440px] mx-auto">
-          <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <div className="mb-6">
-              <span className="inline-block px-6 py-2 bg-gradient-to-r from-orange-100 to-amber-100 text-orange-700 rounded-full text-sm font-semibold mb-4">
-                🌸 Core Values
-              </span>
-            </div>
-            <h2 className="text-[42px] sm:text-[48px] md:text-[56px] font-bold leading-[48px] sm:leading-[54px] md:leading-[64px] text-gray-800 font-['Philosopher'] mb-6">
-              <span className="bg-gradient-to-r from-orange-600 via-amber-600 to-yellow-600 bg-clip-text text-transparent">
-                Pillars of Our Practice
-              </span>
-            </h2>
-            <p className="text-[18px] sm:text-[20px] md:text-[22px] font-normal leading-[28px] sm:leading-[30px] md:leading-[32px] text-gray-600 font-['Lato'] max-w-3xl mx-auto">
-              These fundamental principles guide every interaction and service we provide
-            </p>
-          </div>
-          
+          {/* Features Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {values.map((value, index) => (
-              <div 
-                key={index}
-                className={`group bg-white/80 backdrop-blur-lg rounded-3xl p-8 shadow-xl border border-white/50 transition-all duration-700 hover:shadow-2xl hover:-translate-y-2 text-center ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}
-                style={{ animationDelay: `${800 + index * 150}ms` }}
-              >
-                <div className="text-5xl mb-6 group-hover:scale-110 transition-transform duration-500">
-                  {value.icon}
-                </div>
-                <h3 className="text-[22px] font-bold text-gray-800 font-['Philosopher'] mb-4">
-                  {value.title}
-                </h3>
-                <p className="text-gray-600 font-['Lato'] leading-relaxed">
-                  {value.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Team Section */}
-      <section className="relative w-full py-[80px] sm:py-[90px] md:py-[100px] px-[42px] sm:px-[49px] md:px-[56px] bg-gradient-to-br from-white/80 to-orange-50/50">
-        <div className="w-full max-w-[1440px] mx-auto">
-          {/* Section Header */}
-          <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <div className="mb-6">
-              <span className="inline-block px-6 py-2 bg-gradient-to-r from-purple-100 to-indigo-100 text-purple-700 rounded-full text-sm font-semibold mb-4">
-                👥 Sacred Practitioners
-              </span>
-            </div>
-            <h2 className="text-[42px] sm:text-[48px] md:text-[56px] font-bold leading-[48px] sm:leading-[54px] md:leading-[64px] text-gray-800 font-['Philosopher'] mb-6">
-              <span className="bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 bg-clip-text text-transparent">
-                Meet Our Spiritual Guides
-              </span>
-            </h2>
-            <p className="text-[18px] sm:text-[20px] md:text-[22px] font-normal leading-[28px] sm:leading-[30px] md:leading-[32px] text-gray-600 font-['Lato'] max-w-3xl mx-auto">
-              Our team of certified experts brings decades of combined experience in spiritual arts
-            </p>
-          </div>
-
-          {/* Team Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {teamMembers.map((member, index) => (
+            {features.map((feature, index) => (
               <div
-                key={member.id}
-                className={`group relative bg-white/90 backdrop-blur-lg rounded-3xl p-8 shadow-2xl hover:shadow-purple-500/25 transition-all duration-700 border border-white/50 overflow-hidden transform hover:-translate-y-2 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}
+                key={feature.id}
+                className={`group relative bg-white/90 backdrop-blur-lg rounded-3xl p-8 shadow-2xl hover:shadow-orange-500/25 transition-all duration-700 border border-white/50 overflow-hidden transform hover:-translate-y-2 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}
                 style={{ animationDelay: `${600 + index * 150}ms` }}
               >
                 {/* Dynamic Background Gradient */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${member.color} opacity-0 group-hover:opacity-15 transition-all duration-700 rounded-3xl`}></div>
+                <div className={`absolute inset-0 bg-gradient-to-br ${feature.color} opacity-0 group-hover:opacity-15 transition-all duration-700 rounded-3xl`}></div>
                 
                 {/* Content */}
                 <div className="relative z-10 text-center">
                   {/* Icon */}
                   <div className="relative mb-6 flex justify-center">
                     <div className="relative">
-                      <div className={`relative w-20 h-20 rounded-full bg-gradient-to-br ${member.color} p-1 shadow-xl group-hover:shadow-purple-500/50 transition-all duration-500`}>
+                      <div className={`relative w-20 h-20 rounded-full bg-gradient-to-br ${feature.color} p-1 shadow-xl group-hover:shadow-orange-500/50 transition-all duration-500`}>
                         <div className="w-full h-full bg-white rounded-full flex items-center justify-center group-hover:bg-gray-50 transition-all duration-300 relative overflow-hidden">
-                          <div className="text-3xl">🔮</div>
+                          <div className="text-3xl">{feature.icon}</div>
                           {/* Icon glow effect */}
-                          <div className={`absolute inset-0 bg-gradient-to-r ${member.color} opacity-0 group-hover:opacity-20 transition-opacity duration-500 rounded-full`}></div>
+                          <div className={`absolute inset-0 bg-gradient-to-r ${feature.color} opacity-0 group-hover:opacity-20 transition-opacity duration-500 rounded-full`}></div>
                         </div>
                       </div>
                       
                       {/* Outer glow */}
-                      <div className={`absolute -inset-4 rounded-full bg-gradient-to-r ${member.color} opacity-0 group-hover:opacity-30 blur-xl transition-all duration-700`}></div>
+                      <div className={`absolute -inset-4 rounded-full bg-gradient-to-r ${feature.color} opacity-0 group-hover:opacity-30 blur-xl transition-all duration-700`}></div>
                     </div>
                   </div>
 
-                  {/* Member Info */}
-                  <h3 className="text-[24px] font-bold text-gray-800 font-['Philosopher'] mb-2 group-hover:text-purple-700 transition-colors duration-300">
-                    {member.name}
+                  {/* Feature Info */}
+                  <h3 className="text-[24px] font-bold text-gray-800 font-['Philosopher'] mb-4 group-hover:text-orange-700 transition-colors duration-300">
+                    {feature.title}
                   </h3>
                   
-                  <p className="text-[16px] font-bold text-amber-600 font-['Lato'] mb-4">
-                    {member.role}
-                  </p>
-                  
                   <p className="text-[15px] text-gray-600 font-['Lato'] leading-relaxed">
-                    {member.description}
+                    {feature.description}
                   </p>
                 </div>
                 
                 {/* Glow Effects */}
-                <div className={`absolute inset-0 rounded-3xl bg-gradient-to-br ${member.color} opacity-0 group-hover:opacity-25 blur-2xl transition-all duration-700 -z-10 scale-90 group-hover:scale-100`}></div>
+                <div className={`absolute inset-0 rounded-3xl bg-gradient-to-br ${feature.color} opacity-0 group-hover:opacity-25 blur-2xl transition-all duration-700 -z-10 scale-90 group-hover:scale-100`}></div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Benefits Section */}
+      <section className="relative w-full py-[80px] sm:py-[90px] md:py-[100px] px-[42px] sm:px-[49px] md:px-[56px] bg-gradient-to-br from-orange-50/50 to-amber-50/50">
+        <div className="w-full max-w-[1440px] mx-auto">
+          <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+            <div className="mb-6">
+              <span className="inline-block px-6 py-2 bg-gradient-to-r from-orange-100 to-amber-100 text-orange-700 rounded-full text-sm font-semibold mb-4">
+                🌸 Community Benefits
+              </span>
+            </div>
+            <h2 className="text-[42px] sm:text-[48px] md:text-[56px] font-bold leading-[48px] sm:leading-[54px] md:leading-[64px] text-gray-800 font-['Philosopher'] mb-6">
+              <span className="bg-gradient-to-r from-orange-600 via-amber-600 to-yellow-600 bg-clip-text text-transparent">
+                Why Join Our Community?
+              </span>
+            </h2>
+            <p className="text-[18px] sm:text-[20px] md:text-[22px] font-normal leading-[28px] sm:leading-[30px] md:leading-[32px] text-gray-600 font-['Lato'] max-w-3xl mx-auto">
+              Experience the transformative power of spiritual community and collective growth
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {benefits.map((benefit, index) => (
+              <div 
+                key={index}
+                className={`group bg-white/80 backdrop-blur-lg rounded-3xl p-8 shadow-xl border border-white/50 transition-all duration-700 hover:shadow-2xl hover:-translate-y-2 text-center ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}
+                style={{ animationDelay: `${800 + index * 150}ms` }}
+              >
+                <div className="text-5xl mb-6 group-hover:scale-110 transition-transform duration-500">
+                  {benefit.icon}
+                </div>
+                <h3 className="text-[22px] font-bold text-gray-800 font-['Philosopher'] mb-4">
+                  {benefit.title}
+                </h3>
+                <p className="text-gray-600 font-['Lato'] leading-relaxed">
+                  {benefit.description}
+                </p>
               </div>
             ))}
           </div>
@@ -351,16 +288,16 @@ const AboutUsPage: React.FC = () => {
           <div className={`text-center transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <div className="bg-gradient-to-r from-amber-500/10 to-orange-500/10 rounded-3xl p-8 border border-amber-200/50 backdrop-blur-sm">
               <h3 className="text-[28px] sm:text-[32px] font-bold text-gray-800 font-['Philosopher'] mb-4">
-                Begin Your Spiritual Journey Today
+                Begin Your Community Journey Today
               </h3>
               <p className="text-gray-600 font-['Lato'] mb-8 max-w-2xl mx-auto">
-                Connect with our expert astrologers and spiritual guides for personalized guidance tailored to your unique path.
+                Connect with our global community of spiritual seekers and embark on a transformative journey of shared wisdom and growth.
               </p>
               <div className="flex flex-col sm:flex-row gap-6 justify-center">
                 <button className="group relative px-8 py-4 bg-gradient-to-r from-amber-500 to-orange-500 text-white font-bold text-lg rounded-full overflow-hidden transition-all duration-500 hover:scale-105 shadow-lg hover:shadow-xl">
                   <span className="relative z-10 flex items-center justify-center gap-3">
-                    <div className="text-xl">🔮</div>
-                    Schedule a Consultation
+                    <div className="text-xl">🌟</div>
+                    Join Community Now
                   </span>
                   <div className="absolute inset-0 bg-gradient-to-r from-amber-600 to-orange-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </button>
@@ -385,4 +322,4 @@ const AboutUsPage: React.FC = () => {
   );
 };
 
-export default AboutUsPage;
+export default CommunityPage;
