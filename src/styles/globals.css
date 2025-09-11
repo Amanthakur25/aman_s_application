@@ -37,6 +37,11 @@
     box-sizing: border-box;
   }
 
+  /* Apply Philosopher font to all headings */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: Philosopher, sans-serif !important;
+  }
+
   *, *::before, *::after {
     box-sizing: inherit;
   }

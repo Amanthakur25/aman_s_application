@@ -232,7 +232,7 @@ const ZodiacDetailPage: React.FC = () => {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-gray-800 mb-4">Zodiac Sign Not Found</h1>
+          <h1 className="text-2xl font-bold text-gray-800 mb-4 font-['Philosopher']">Zodiac Sign Not Found</h1>
           <button
             onClick={() => router.push('/horoscope')}
             className="bg-orange-500 text-white px-6 py-2 rounded-full hover:bg-orange-600 transition-colors"
@@ -365,7 +365,7 @@ const ZodiacDetailPage: React.FC = () => {
                 <h3 className="text-[20px] font-bold text-[#111111] font-['Philosopher'] mb-4">Personality Traits</h3>
                 
                 <div className="mb-4">
-                  <h4 className="text-[16px] font-semibold text-green-600 mb-2">Positive Traits</h4>
+                  <h4 className="text-[16px] font-semibold text-green-600 mb-2 font-['Philosopher']">Positive Traits</h4>
                   <div className="flex flex-wrap gap-2">
                     {zodiacInfo.traits.positive.map((trait, index) => (
                       <span key={index} className="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">
@@ -376,7 +376,7 @@ const ZodiacDetailPage: React.FC = () => {
                 </div>
                 
                 <div>
-                  <h4 className="text-[16px] font-semibold text-red-600 mb-2">Areas to Work On</h4>
+                  <h4 className="text-[16px] font-semibold text-red-600 mb-2 font-['Philosopher']">Areas to Work On</h4>
                   <div className="flex flex-wrap gap-2">
                     {zodiacInfo.traits.negative.map((trait, index) => (
                       <span key={index} className="px-3 py-1 bg-red-100 text-red-800 rounded-full text-sm">

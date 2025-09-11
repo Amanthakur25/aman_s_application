@@ -192,7 +192,7 @@ const ContactPage: React.FC = () => {
                       📍
                     </div>
                     <div>
-                      <h4 className="font-bold text-gray-800">Address</h4>
+                      <h4 className="font-bold text-gray-800 font-['Philosopher']">Address</h4>
                       <p className="text-gray-600">123 Spiritual Lane, Divine City, Sacred State 110001</p>
                     </div>
                   </div>
@@ -202,7 +202,7 @@ const ContactPage: React.FC = () => {
                       📞
                     </div>
                     <div>
-                      <h4 className="font-bold text-gray-800">Phone</h4>
+                      <h4 className="font-bold text-gray-800 font-['Philosopher']">Phone</h4>
                       <p className="text-gray-600">+91 9876543210</p>
                     </div>
                   </div>
@@ -212,7 +212,7 @@ const ContactPage: React.FC = () => {
                       📧
                     </div>
                     <div>
-                      <h4 className="font-bold text-gray-800">Email</h4>
+                      <h4 className="font-bold text-gray-800 font-['Philosopher']">Email</h4>
                       <p className="text-gray-600">info@globalpuja.com</p>
                     </div>
                   </div>
@@ -222,7 +222,7 @@ const ContactPage: React.FC = () => {
                       🕒
                     </div>
                     <div>
-                      <h4 className="font-bold text-gray-800">Working Hours</h4>
+                      <h4 className="font-bold text-gray-800 font-['Philosopher']">Working Hours</h4>
                       <p className="text-gray-600">Mon - Sun: 6:00 AM - 10:00 PM</p>
                     </div>
                   </div>

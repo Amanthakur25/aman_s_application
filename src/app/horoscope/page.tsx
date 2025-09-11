@@ -670,7 +670,7 @@ const HoroscopePage: React.FC = () => {
                 ].map((feature, index) => (
                   <div key={index} className="group p-6 bg-white/70 backdrop-blur-sm rounded-2xl border border-purple-100 hover:border-purple-300 transition-all duration-300 hover:shadow-lg transform hover:scale-105">
                     <div className="text-3xl mb-3 group-hover:scale-110 transition-transform duration-300">{feature.icon}</div>
-                    <h4 className="text-[16px] font-bold text-gray-800 mb-2">{feature.title}</h4>
+                    <h4 className="text-[16px] font-bold text-gray-800 mb-2 font-['Philosopher']">{feature.title}</h4>
                     <p className="text-[13px] text-gray-600">{feature.desc}</p>
                   </div>
                 ))}
@@ -728,7 +728,7 @@ const HoroscopePage: React.FC = () => {
                           <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                         </svg>
                       </div>
-                      <h4 className="text-lg font-bold text-gray-800">Cosmic Wisdom</h4>
+                      <h4 className="text-lg font-bold text-gray-800 font-['Philosopher']">Cosmic Wisdom</h4>
                       <p className="text-sm text-gray-600">Ancient & Modern</p>
                     </div>
                   </div>
@@ -860,7 +860,7 @@ const HoroscopePage: React.FC = () => {
             <div className="inline-flex items-center gap-4 bg-white/80 backdrop-blur-lg rounded-2xl p-6 shadow-lg border border-purple-100">
               <div className="text-4xl">💬</div>
               <div className="text-left">
-                <h4 className="text-lg font-bold text-gray-800 mb-1">Still have questions?</h4>
+                <h4 className="text-lg font-bold text-gray-800 mb-1 font-['Philosopher']">Still have questions?</h4>
                 <p className="text-gray-600 text-sm">Our expert astrologers are here to help</p>
               </div>
               <button className="ml-4 px-6 py-3 bg-gradient-to-r from-purple-500 to-blue-500 text-white font-bold rounded-xl hover:from-purple-600 hover:to-blue-600 transition-all duration-300 transform hover:scale-105">

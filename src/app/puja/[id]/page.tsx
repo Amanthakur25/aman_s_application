@@ -124,7 +124,7 @@ const PujaDetailPage: React.FC = () => {
       dakshinaStatus: true,
       manokamanaPrices: '101,251,501,1001',
       manokamanaPricesUSD: '1.5,3,6,12',
-      manokamnaStatus: true,
+      manokamanaStatus: true,
       category: 'prosperity',
       isActive: true,
       isFeatured: true,
@@ -167,7 +167,7 @@ const PujaDetailPage: React.FC = () => {
       dakshinaStatus: true,
       manokamanaPrices: '201,501,1001',
       manokamanaPricesUSD: '2.5,6,12',
-      manokamnaStatus: true,
+      manokamanaStatus: true,
       category: 'prosperity',
       isActive: true,
       isFeatured: false,
@@ -210,7 +210,7 @@ const PujaDetailPage: React.FC = () => {
       dakshinaStatus: true,
       manokamanaPrices: '101,201,501',
       manokamanaPricesUSD: '1.5,2.5,6',
-      manokamnaStatus: true,
+      manokamanaStatus: true,
       category: 'education',
       isActive: true,
       isFeatured: true,
@@ -324,7 +324,7 @@ const PujaDetailPage: React.FC = () => {
         <Header />
         <div className="pt-24 flex items-center justify-center min-h-screen">
           <div className="text-center">
-            <h1 className="text-2xl font-bold text-gray-900 mb-4">Puja Not Found</h1>
+            <h1 className="text-2xl font-bold text-gray-900 mb-4 font-['Philosopher']">Puja Not Found</h1>
             <button
               onClick={() => router.push('/')}
               className="bg-orange-500 text-white px-6 py-3 rounded-lg hover:bg-orange-600 transition-colors"
