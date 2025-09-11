@@ -641,7 +641,7 @@ const StorePage: React.FC = () => {
                       
                       {/* Quote */}
                       <blockquote className="text-xl md:text-2xl text-gray-700 font-['Lato'] italic leading-relaxed mb-8 max-w-3xl mx-auto">
-                        "{testimonial.text}"
+                        {`"`}{testimonial.text}{`"`}
                       </blockquote>
                       
                       {/* Customer Info */}

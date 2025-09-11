@@ -830,7 +830,7 @@ const PujaDetailPage: React.FC = () => {
                             <span className="inline-block bg-rose-100 text-rose-600 text-xs font-medium px-3 py-1 rounded-full mb-3">
                               ✨ {testimonial.benefit}
                             </span>
-                            <p className="text-gray-700 italic leading-relaxed">"{testimonial.testimonial}"</p>
+                            <p className="text-gray-700 italic leading-relaxed">{`"`}{testimonial.testimonial}{`"`}</p>
                           </div>
                           <div className="flex items-center justify-between text-sm">
                             <span className="text-gray-500">{testimonial.date}</span>
@@ -1018,7 +1018,7 @@ const PujaDetailPage: React.FC = () => {
                               <p className="text-red-100 text-lg mb-6">Remover of Obstacles</p>
                               <div className="bg-white/20 backdrop-blur-sm rounded-2xl p-4">
                                 <p className="text-sm text-red-100">
-                                  "Vighneshwaraya Vardaya Kurve Namaha"
+                                  {`"`}Vighneshwaraya Vardaya Kurve Namaha{`"`}
                                 </p>
                               </div>
                             </div>

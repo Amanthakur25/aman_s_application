@@ -438,7 +438,7 @@ const DailyHoroscopePage: React.FC = () => {
                 </h3>
               </div>
               <p className="text-gray-600 font-['Lato'] leading-relaxed">
-                Prioritize self-care and mindfulness practices today. Physical activity will boost your energy levels. Pay attention to your diet and hydration. Meditation or yoga can help center your thoughts. Listen to your body's signals and rest when needed. Mental well-being is equally important.
+                Prioritize self-care and mindfulness practices today. Physical activity will boost your energy levels. Pay attention to your diet and hydration. Meditation or yoga can help center your thoughts. Listen to your body{`'`}s signals and rest when needed. Mental well-being is equally important.
               </p>
             </div>
           </div>

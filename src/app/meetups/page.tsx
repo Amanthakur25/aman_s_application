@@ -368,10 +368,10 @@ const MeetupsPage: React.FC = () => {
                 style={{ animationDelay: `${1000 + index * 150}ms` }}
               >
                 <div className="text-5xl mb-6 text-amber-500">
-                  ""
+                  {`"`}{`"`}
                 </div>
                 <p className="text-gray-600 font-['Lato'] leading-relaxed mb-6 italic">
-                  "{testimonial.text}"
+                  {`"`}{testimonial.text}{`"`}
                 </p>
                 <div>
                   <h4 className="text-[18px] font-bold text-gray-800 font-['Philosopher']">

@@ -204,7 +204,7 @@ const OurServicesPage: React.FC = () => {
               </span>
             </h2>
             <p className="text-[18px] sm:text-[20px] md:text-[22px] font-normal leading-[28px] sm:leading-[30px] md:leading-[32px] text-gray-600 font-['Lato'] max-w-3xl mx-auto">
-              Our expert astrologers and spiritual guides offer personalized services to help you navigate life's challenges
+              Our expert astrologers and spiritual guides offer personalized services to help you navigate life{`'`}s challenges
             </p>
           </div>
 

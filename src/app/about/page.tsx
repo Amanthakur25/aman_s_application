@@ -146,7 +146,7 @@ const AboutUsPage: React.FC = () => {
                   </h1>
                   
                   <p className="text-[18px] sm:text-[20px] md:text-[22px] font-normal leading-[28px] sm:leading-[30px] md:leading-[32px] font-['Lato'] max-w-4xl mb-10 text-gray-700 mx-auto">
-                    Discover our sacred journey of spiritual enlightenment and commitment to guiding souls toward cosmic harmony.
+                    Discover your sacred journey of spiritual enlightenment and commitment to guiding souls toward cosmic harmony.
                     <br className="hidden sm:block" />
                     Rooted in ancient wisdom, dedicated to modern healing.
                   </p>
@@ -225,7 +225,7 @@ const AboutUsPage: React.FC = () => {
               <div className="flex items-center gap-4 mt-8">
                 <div className="text-4xl">🕉️</div>
                 <p className="text-[18px] text-gray-700 font-['Philosopher'] font-bold">
-                  "Knowledge is the light that dispels darkness"
+                  {`"`}Knowledge is the light that dispels darkness{`"`}
                 </p>
               </div>
             </div>

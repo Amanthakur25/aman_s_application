@@ -408,7 +408,7 @@ const MonthlyHoroscopePage: React.FC = () => {
                 </h3>
               </div>
               <p className="text-gray-600 font-['Lato'] leading-relaxed">
-                This month brings significant opportunities for deeper emotional connections. Single signs may encounter meaningful encounters, especially during the second week. Those in relationships should focus on quality time together. Communication is key to resolving any misunderstandings. Express appreciation for your partner's support throughout the month.
+                This month brings significant opportunities for deeper emotional connections. Single signs may encounter meaningful encounters, especially during the second week. Those in relationships should focus on quality time together. Communication is key to resolving any misunderstandings. Express appreciation for your partner{`'`}s support throughout the month.
               </p>
             </div>
             
@@ -438,7 +438,7 @@ const MonthlyHoroscopePage: React.FC = () => {
                 </h3>
               </div>
               <p className="text-gray-600 font-['Lato'] leading-relaxed">
-                Prioritize holistic wellness this month. Physical activity will boost your energy levels significantly. Pay attention to your diet and hydration, especially during the middle weeks. Meditation or yoga can help center your thoughts during busy periods. Listen to your body's signals and rest when needed. Mental well-being requires extra attention this month.
+                Prioritize holistic wellness this month. Physical activity will boost your energy levels significantly. Pay attention to your diet and hydration, especially during the middle weeks. Meditation or yoga can help center your thoughts during busy periods. Listen to your body{`'`}s signals and rest when needed. Mental well-being requires extra attention this month.
               </p>
             </div>
           </div>

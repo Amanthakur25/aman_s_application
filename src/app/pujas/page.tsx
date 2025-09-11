@@ -748,7 +748,7 @@ const AllPujasPage: React.FC = () => {
                         ))}
                       </div>
                       <blockquote className="text-lg text-gray-700 font-['Lato'] leading-relaxed mb-6 italic">
-                        "{testimonial.text}"
+                        {`"`}{testimonial.text}{`"`}
                       </blockquote>
                       <div className="text-orange-600 font-semibold mb-2">{testimonial.name}</div>
                       <div className="text-gray-500 text-sm mb-2">{testimonial.location}</div>
