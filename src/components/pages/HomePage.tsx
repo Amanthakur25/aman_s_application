@@ -13,6 +13,7 @@ import ArticlesSection from '@/components/sections/ArticlesSection';
 import DownloadAppSection from '@/components/sections/DownloadAppSection';
 import { PujaCard, HoroscopeCard, ProcessStep, Testimonial, Article } from '@/types';
 import { getHoroscopeCards } from '@/utils/horoscope';
+import { FaTemple, FaCalendarAlt } from 'react-icons/fa';
 
 export default function HomePage() {
   const pujaCards: PujaCard[] = [
@@ -24,6 +25,7 @@ export default function HomePage() {
       description: "For Immediate Solutions to Life's Problems, Gaining Wealth and Fame. Solutions to Life's Problems, Gaining Wealth and Fame.",
       date: "Thursday, 30 Aug, 2025",
       isNew: true,
+      timer: false,
       shareLabel: "Share"
     },
     {
@@ -33,7 +35,8 @@ export default function HomePage() {
       temple: "Siddha Mahavidya Temple",
       description: "For Immediate Solutions to Life's Problems, Gaining Wealth and Fame. Solutions to Life's Problems, Gaining Wealth and Fame.",
       date: "Thursday, 30 Aug, 2025",
-      isNew: true
+      isNew: false,
+      timer: true,
     },
     {
       id: '3',
@@ -42,7 +45,8 @@ export default function HomePage() {
       temple: "Siddha Mahavidya Temple",
       description: "For Immediate Solutions to Life's Problems, Gaining Wealth and Fame. Solutions to Life's Problems, Gaining Wealth and Fame.",
       date: "Thursday, 30 Aug, 2025",
-      isNew: true
+      isNew: true,
+      timer: false,
     }
   ];
 

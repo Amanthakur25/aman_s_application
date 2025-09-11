@@ -33,7 +33,7 @@ const PujaSection: React.FC<PujaSectionProps> = ({ pujaCards }) => (
   >
     <div className="w-full max-w-[1440px] mx-auto">
       <div className="flex justify-center items-center w-full">
-        <div className="flex flex-col justify-start items-center w-full lg:w-3/4 mb-[14px] sm:mb-[16px] md:mb-[18px]">
+        <div className="flex flex-col justify-start items-center w-full lg:w-5/6 mb-[14px] sm:mb-[16px] md:mb-[18px]">
           <div className="flex flex-col justify-start items-center w-full mr-[62px] sm:mr-[72px] md:mr-[82px] ml-[62px] sm:ml-[72px] md:ml-[82px]">
             <div className="flex justify-center items-start w-full px-[6px] sm:px-[7px] md:px-[8px]">
               <h2 className="text-[36px] sm:text-[42px] md:text-[48px] font-bold leading-[41px] sm:leading-[48px] md:leading-[54px] text-center text-[#111111] font-['Philosopher'] mb-[5px] sm:mb-[6px] md:mb-[6px]">

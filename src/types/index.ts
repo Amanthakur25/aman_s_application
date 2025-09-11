@@ -8,6 +8,7 @@ export interface PujaCard {
   description: string;
   date: string;
   isNew?: boolean;
+  timer?: boolean;
   shareLabel?: string;
 }
 
