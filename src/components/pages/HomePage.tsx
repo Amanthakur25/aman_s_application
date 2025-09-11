@@ -156,7 +156,7 @@ export default function HomePage() {
       <VideoSection />
       <TestimonialsSection testimonials={testimonials} />
       <ArticlesSection articles={articles} />
-      <DownloadAppSection />
+      {/* <DownloadAppSection /> */}
       <Footer />
     </div>
   );

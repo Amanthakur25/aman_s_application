@@ -11,8 +11,8 @@ const VideoSection: React.FC = () => {
 
   return (
     <section className="w-full flex justify-center items-center px-[22px] sm:px-[26px] md:px-[30px]">
-      <div className="relative w-full border border-[#5c4228] rounded-[30px] bg-[#f37335] px-[42px] sm:px-[49px] md:px-[56px] py-[20px] sm:py-[24px] md:py-[28px] mt-[66px] sm:mt-[77px] md:mt-[88px]">
-        <div className="relative w-full h-0 pb-[56.25%] shadow-[0px_4px_6px_#888888ff]">
+      <div className="relative w-full border border-[#5c4228] rounded-[30px] bg-[#f37335] mt-[66px] sm:mt-[77px] md:mt-[88px]">
+        <div className="relative w-full h-0 pb-[56.25%]">
           <iframe
             src="https://www.youtube.com/embed/xB00QteaAsM?si=W3PYby2b4Q4gUDKC&autoplay=0"
             title="YouTube video player"

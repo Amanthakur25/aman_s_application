@@ -67,9 +67,9 @@ const ProcessSection: React.FC<ProcessSectionProps> = ({ processSteps }) => {
                       <Image
                         src={imagePaths[index % imagePaths.length]} // Use the corresponding image
                         alt={`Process Illustration ${index + 1}`}
-                        width={564}
-                        height={408}
-                        className="w-[200px] h-[145px] sm:w-[280px] sm:h-[203px] md:w-[451px] md:h-[326px] lg:w-[564px] lg:h-[408px] rounded-[20px] transform rotate-6 transition-transform duration-300"
+                        width={350}
+                        height={220}
+                        className="w-[200px] h-[145px] sm:w-[280px] sm:h-[203px] md:w-[451px] md:h-[326px] lg:w-[350px] lg:h-[220px] rounded-[20px] transform rotate-6 transition-transform duration-300"
                       />
                     </div>
                   </div>
