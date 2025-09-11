@@ -19,12 +19,12 @@ const ProcessStep: React.FC<ProcessStepProps> = ({
   isHighlighted = false,
   imageSrc
 }) => (
-  <div className={`flex gap-4 sm:gap-6 md:gap-[28px] justify-start items-center w-full border rounded-[20px] sm:rounded-[30px] px-4 sm:px-6 md:px-[30px] py-4 sm:py-6 md:py-[30px] ${
+  <div className={`flex gap-4 sm:gap-6 md:gap-[28px] justify-start items-center w-full border rounded-[20px] sm:rounded-[30px] px-4 sm:px-6 md:px-[25px] py-4 sm:py-6 md:py-[25px] ${
     isHighlighted 
       ? 'border-[#fbd0bc] bg-[linear-gradient(90deg,#f4aa36_0%,_#f37335_100%)]' 
       : 'border-[#f37335] bg-[#fff3ee]'
   }`}>
-    <div className={`flex flex-col gap-1 sm:gap-2 md:gap-[4px] justify-center items-center w-[60px] sm:w-[90px] md:w-[150px] rounded-[15px] sm:rounded-[20px] px-3 sm:px-5 md:px-[30px] py-3 sm:py-5 md:py-[30px] ${
+    <div className={`flex flex-col gap-1 sm:gap-2 md:gap-[4px] justify-center items-center w-[60px] sm:w-[90px] md:w-[150px] rounded-[15px] sm:rounded-[20px] px-3 sm:px-5 md:px-[20px] py-3 sm:py-5 md:py-[20px] ${
       isHighlighted 
         ? 'bg-white' :'bg-[linear-gradient(90deg,#f4aa36_0%,_#f37335_100%)]'
     }`}>

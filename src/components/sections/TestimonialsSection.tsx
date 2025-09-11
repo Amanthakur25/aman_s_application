@@ -38,6 +38,7 @@ const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({ testimonials 
             {testimonials.map((testimonial, index) => (
               <TestimonialCard key={index} {...testimonial} />
             ))}
+            
           </div>
           {/* Centered Logo */}
           <div className="flex justify-center w-full mt-[45px] sm:mt-[53px] md:mt-[60px]">

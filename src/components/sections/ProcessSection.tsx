@@ -24,7 +24,7 @@ const ProcessSection: React.FC<ProcessSectionProps> = ({ processSteps }) => {
     '/images/img__2.png',
     '/images/ganapati-temple.jpg',
     '/images/img_image copy.png',
-    '/images/img_image_408x564.png',
+    '/images/img__2.png',
   ];
 
   return (
@@ -37,7 +37,7 @@ const ProcessSection: React.FC<ProcessSectionProps> = ({ processSteps }) => {
         backgroundRepeat: 'no-repeat'
       }}
     >
-      <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-8 md:px-16 lg:px-[180px] xl:px-[240px]">
+      <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-8 md:px-16 lg:px-[160px] xl:px-[160px]">
         <div className="flex justify-center items-center w-full mt-[39px] sm:mt-[46px] md:mt-[52px]">
           <div className="flex flex-col justify-start items-start w-full">
             <h2 className="text-[36px] sm:text-[42px] md:text-[48px] font-bold leading-[41px] sm:leading-[48px] md:leading-[54px] text-left text-[#111111] font-['Philosopher'] w-auto">
@@ -60,7 +60,7 @@ const ProcessSection: React.FC<ProcessSectionProps> = ({ processSteps }) => {
                       imageSrc={imagePaths[index % imagePaths.length]} // Assign image based on index
                     />
                     <div 
-                      className={`absolute right-2 sm:right-4 md:right-[44px] top-0 bottom-0 transition-opacity duration-300 hidden sm:block ${
+                      className={`absolute right-2 sm:right-4 md:right-[44px] top-0 bottom-0 z-[99999] transition-opacity duration-300 hidden sm:block ${
                         hoveredIndex === index ? 'opacity-100' : 'opacity-0'
                       }`}
                     >
