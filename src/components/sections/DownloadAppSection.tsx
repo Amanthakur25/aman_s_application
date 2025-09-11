@@ -5,7 +5,7 @@ import Image from 'next/image';
 const DownloadAppSection: React.FC = () => (
   <section className="w-full">
     <Image
-      src="/images/img_image_1.png"
+      src="/images/img_image_.png"
       alt="Download App"
       width={1920}
       height={898}
