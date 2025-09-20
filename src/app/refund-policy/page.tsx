@@ -28,7 +28,7 @@ const RefundPolicyPage: React.FC = () => {
             <div className="flex flex-col justify-start items-center w-full mr-[62px] sm:mr-[72px] md:mr-[82px] ml-[62px] sm:ml-[72px] md:ml-[82px]">
               <div className="flex justify-center items-start w-full px-[6px] sm:px-[7px] md:px-[8px]">
                 <h2 className="text-[36px] sm:text-[42px] md:text-[48px] font-bold leading-[41px] sm:leading-[48px] md:leading-[54px] text-center text-[#111111] font-['Philosopher'] mb-[5px] sm:mb-[6px] md:mb-[6px]">
-                  Refund Policy Coming Soon
+                  Refund Policy
                 </h2>
               </div>
               <div className="flex flex-col justify-start items-center w-full mt-[-3px] sm:mt-[-3.5px] md:mt-[-4px]">
@@ -41,10 +41,49 @@ const RefundPolicyPage: React.FC = () => {
                     className="w-[180px] h-[11px] sm:w-[210px] sm:h-[13px] md:w-[240px] md:h-[14px] self-end"
                   />
                 </div>
-                <div className="flex justify-center items-end w-full px-[8px] sm:px-[9px] md:px-[10px] py-[8px] sm:py-[9px] md:py-[10px] mt-[-5px] sm:mt-[-5.5px] md:mt-[-6px]">
-                  <p className="text-[12px] sm:text-[14px] md:text-[16px] font-normal leading-[20px] sm:leading-[23px] md:leading-[26px] text-center text-[#797979] font-['Lato'] w-full sm:w-4/5 md:w-[54%] mt-[8px] sm:mt-[9px] md:mt-[10px]">
-                    Our Refund Policy page is under construction and will be launching soon. Stay tuned for our comprehensive refund guidelines!
-                  </p>
+                <div className="flex flex-col justify-start items-start w-full px-[8px] sm:px-[9px] md:px-[10px] py-[8px] sm:py-[9px] md:py-[10px] mt-[-5px] sm:mt-[-5.5px] md:mt-[-6px]">
+                  <h3 className="text-[18px] sm:text-[20px] md:text-[22px] font-semibold text-[#111111] font-['Lato'] mb-[8px]">Spiritual Services (Puja, Chadawa, Hawan, Jaap)</h3>
+                  <ul className="text-[12px] sm:text-[14px] md:text-[16px] font-normal leading-[20px] sm:leading-[23px] md:leading-[26px] text-[#797979] font-['Lato'] list-disc pl-[20px]">
+                    <li>No cancellations or refunds: All spiritual bookings are final and nonrefundable.</li>
+                    <li>Rescheduling allowed:
+                      <ul className="list-disc pl-[20px]">
+                        <li>Must be requested at least 24 hours before the scheduled time.</li>
+                        <li>Rescheduling is allowed once per booking, within 7 days of the original date.</li>
+                        <li>Subject to availability and confirmation by Trilok’s team.</li>
+                      </ul>
+                    </li>
+                  </ul>
+
+                  <h3 className="text-[18px] sm:text-[20px] md:text-[22px] font-semibold text-[#111111] font-['Lato'] mt-[16px] mb-[8px]">Products (Shivlings, Yantras, Kits, etc)</h3>
+                  <ul className="text-[12px] sm:text-[14px] md:text-[16px] font-normal leading-[20px] sm:leading-[23px] md:leading-[26px] text-[#797979] font-['Lato'] list-disc pl-[20px]">
+                    <li>Return eligibility:
+                      <ul className="list-disc pl-[20px]">
+                        <li>Only accepted for damaged or incorrect items.</li>
+                        <li>Mandatory unboxing video must be provided within 24 hours of the delivery to raise the return request.</li>
+                        <li>No returns will be accepted without this video proof.</li>
+                      </ul>
+                    </li>
+                    <li>Return window: Within 7 days of delivery.</li>
+                    <li>Refund timeline: Processed within 5–7 business days after verification and will be credited within 3-4 business days.</li>
+                  </ul>
+
+                  <h3 className="text-[18px] sm:text-[20px] md:text-[22px] font-semibold text-[#111111] font-['Lato'] mt-[16px] mb-[8px]">App Features & Coin Rewards</h3>
+                  <ul className="text-[12px] sm:text-[14px] md:text-[16px] font-normal leading-[20px] sm:leading-[23px] md:leading-[26px] text-[#797979] font-['Lato'] list-disc pl-[20px]">
+                    <li>Digital purchases (e.g., FliptheCard, premium features) are nonrefundable.</li>
+                    <li>Coin errors: Must be reported within 48 hours for review.</li>
+                  </ul>
+
+                  <h3 className="text-[18px] sm:text-[20px] md:text-[22px] font-semibold text-[#111111] font-['Lato'] mt-[16px] mb-[8px]">Payment Errors</h3>
+                  <ul className="text-[12px] sm:text-[14px] md:text-[16px] font-normal leading-[20px] sm:leading-[23px] md:leading-[26px] text-[#797979] font-['Lato'] list-disc pl-[20px]">
+                    <li>Duplicate transactions are autorefunded within 3–5 business days.</li>
+                    <li>Manual support available via app or WhatsApp.</li>
+                  </ul>
+
+                  <h3 className="text-[18px] sm:text-[20px] md:text-[22px] font-semibold text-[#111111] font-['Lato'] mt-[16px] mb-[8px]">How to Reschedule or Report Issues</h3>
+                  <ul className="text-[12px] sm:text-[14px] md:text-[16px] font-normal leading-[20px] sm:leading-[23px] md:leading-[26px] text-[#797979] font-['Lato'] list-disc pl-[20px]">
+                    <li>WhatsApp: Message “Reschedule” or “Product Issue” with Booking ID and video.</li>
+                    <li>Email: </li>
+                  </ul>
                 </div>
               </div>
             </div>
@@ -52,7 +91,7 @@ const RefundPolicyPage: React.FC = () => {
             <div className="flex justify-center mt-[30px] sm:mt-[35px] md:mt-[40px]">
               <Image
                 src="/images/img_group_8.svg"
-                alt="Coming Soon Icon"
+                alt="Policy Icon"
                 width={200}
                 height={200}
                 className="w-[150px] h-[150px] sm:w-[175px] sm:h-[175px] md:w-[200px] md:h-[200px]"

@@ -170,11 +170,12 @@ const Footer: React.FC = () => {
             
             {/* Footer Links */}
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-6 justify-center items-center self-end lg:self-auto w-auto">
+              
               <Link 
-                href="/orders-payments"
+                href="/terms-conditions"
                 className="text-sm sm:text-base md:text-[16px] font-normal leading-[19px] text-left text-white font-['Work_Sans'] hover:text-orange-200 transition-colors duration-200"
               >
-                Orders & Payments
+                Terms & Conditions
               </Link>
               <Image
                 src="/images/img_group_129707.png"
@@ -182,12 +183,12 @@ const Footer: React.FC = () => {
                 width={5}
                 height={18}
                 className="hidden sm:block w-[4px] h-[14px] sm:w-[5px] sm:h-[18px]"
-              />
+              />              
               <Link 
-                href="/returns-exchange"
+                href="/privacy-policy"
                 className="text-sm sm:text-base md:text-[16px] font-normal leading-[19px] text-left text-white font-['Work_Sans'] hover:text-orange-200 transition-colors duration-200"
               >
-                Returns & Exchange
+                Privacy Policy
               </Link>
               <Image
                 src="/images/img_group_129707.png"
@@ -210,10 +211,10 @@ const Footer: React.FC = () => {
                 className="hidden sm:block w-[4px] h-[14px] sm:w-[5px] sm:h-[18px]"
               />
               <Link 
-                href="/terms-conditions"
+                href="/shipping-policy"
                 className="text-sm sm:text-base md:text-[16px] font-normal leading-[19px] text-left text-white font-['Work_Sans'] hover:text-orange-200 transition-colors duration-200"
               >
-                Terms & Conditions
+                Shipping Policy
               </Link>
               <Image
                 src="/images/img_group_129707.png"
@@ -223,10 +224,10 @@ const Footer: React.FC = () => {
                 className="hidden sm:block w-[4px] h-[14px] sm:w-[5px] sm:h-[18px]"
               />
               <Link 
-                href="/privacy-policy"
+                href="/contact-us"
                 className="text-sm sm:text-base md:text-[16px] font-normal leading-[19px] text-left text-white font-['Work_Sans'] hover:text-orange-200 transition-colors duration-200"
               >
-                Privacy Policy
+                Contact Us
               </Link>
             </div>
 
