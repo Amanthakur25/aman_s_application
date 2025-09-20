@@ -6,6 +6,7 @@ import { useRouter, usePathname } from 'next/navigation';
 import { useAppSelector, useAppDispatch } from '@/hooks';
 import { setLoginModalOpen, setMobileMenuOpen } from '@/store/slices/uiSlice';
 import LoginModal from '@/components/modals/LoginModal';
+import LanguageSwitcher from '@/components/LanguageSwitcher/LanguageSwitcher';
 
 const Header: React.FC = () => {
   const router = useRouter();
@@ -33,7 +34,7 @@ const Header: React.FC = () => {
     };
   }, []);
 
-  // Close mobile menu when clicking outside
+  // Close mobile menu and dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -46,7 +47,6 @@ const Header: React.FC = () => {
         dispatch(setMobileMenuOpen(false));
       }
 
-      // Close dropdown when clicking outside
       if (
         showMoreDropdown &&
         dropdownRef.current &&
@@ -72,42 +72,50 @@ const Header: React.FC = () => {
       setActiveMenuItem('Horoscope');
     } else if (pathname?.startsWith('/store')) {
       setActiveMenuItem('Store');
-    } else if (pathname?.startsWith('/about') || pathname?.startsWith('/panchang') || pathname?.startsWith('/blog') || pathname?.startsWith('/free-kundli') || pathname?.startsWith('/match-making') || pathname?.startsWith('/numerology') || pathname?.startsWith('/contact') || pathname?.startsWith('/ask-question') || pathname?.startsWith('/astro-watch') || pathname?.startsWith('/manglik-dosh') || pathname?.startsWith('/kaalsarp-dosh') || pathname?.startsWith('/astro-tools') || pathname?.startsWith('/career')) {
+    } else if (
+      pathname?.startsWith('/about') ||
+      pathname?.startsWith('/panchang') ||
+      pathname?.startsWith('/blog') ||
+      pathname?.startsWith('/free-kundli') ||
+      pathname?.startsWith('/match-making') ||
+      pathname?.startsWith('/numerology') ||
+      pathname?.startsWith('/contact') ||
+      pathname?.startsWith('/ask-question') ||
+      pathname?.startsWith('/astro-watch') ||
+      pathname?.startsWith('/manglik-dosh') ||
+      pathname?.startsWith('/kaalsarp-dosh') ||
+      pathname?.startsWith('/astro-tools') ||
+      pathname?.startsWith('/career')
+    ) {
       setActiveMenuItem('More');
     }
   }, [pathname]);
 
-  // Dropdown menu items - optimized and merged
+  // Dropdown menu items
   const moreMenuItems = [
-    { name: "Panchang", href: "/panchang", icon: "📅" },
-    { name: "Blog", href: "/blog", icon: "📚" },
-    { name: "Free Kundli", href: "/free-kundli", icon: "🔮" },
-    { name: "Match Making", href: "/match-making", icon: "💕" },
-    { name: "Numerology", href: "/numerology", icon: "🔢" },
-    { name: "Astro Tools", href: "/astro-tools", icon: "🛠️" },
-    { name: "Ask Question", href: "/ask-question", icon: "❓" },
-    { name: "Career", href: "/career", icon: "💼" },
-    { name: "Contact", href: "/contact", icon: "📞" }
+    { name: 'Panchang', href: '/panchang', icon: '📅' },
+    { name: 'Blog', href: '/blog', icon: '📚' },
+    { name: 'Free Kundli', href: '/free-kundli', icon: '🔮' },
+    { name: 'Match Making', href: '/match-making', icon: '💕' },
+    { name: 'Numerology', href: '/numerology', icon: '🔢' },
+    { name: 'Astro Tools', href: '/astro-tools', icon: '🛠️' },
+    { name: 'Ask Question', href: '/ask-question', icon: '❓' },
+    { name: 'Career', href: '/career', icon: '💼' },
+    { name: 'Contact', href: '/contact', icon: '📞' },
   ];
 
   const menuItems = [
-    { name: "Home", href: "/", active: activeMenuItem === "Home" },
-    { name: "Puja", href: "/pujas", active: activeMenuItem === "Puja" },
-    { name: "Horoscope", href: "/horoscope", active: activeMenuItem === "Horoscope" },
-    { name: "Store", href: "/store", active: activeMenuItem === "Store" },
-    { name: "More", href: "/about", active: activeMenuItem === "More" },
+    { name: 'Home', href: '/', active: activeMenuItem === 'Home' },
+    { name: 'Puja', href: '/pujas', active: activeMenuItem === 'Puja' },
+    { name: 'Horoscope', href: '/horoscope', active: activeMenuItem === 'Horoscope' },
+    { name: 'Store', href: '/store', active: activeMenuItem === 'Store' },
+    { name: 'More', href: '/about', active: activeMenuItem === 'More' },
   ];
 
   const handleMenuItemClick = (href: string, name: string) => {
-    // Update active state immediately
     setActiveMenuItem(name);
-
-    // Close dropdown if open
     setShowMoreDropdown(false);
-
-    // Navigate to the page for all menu items
     router.push(href);
-
     if (isMobileMenuOpen) {
       dispatch(setMobileMenuOpen(false));
     }
@@ -137,10 +145,7 @@ const Header: React.FC = () => {
           <div className="flex items-center rounded-full" style={{ background: '#FFF0E9' }}>
             <nav className="hidden lg:flex items-center justify-between w-full">
               {menuItems.slice(0, 4).map((item, index) => (
-                <div
-                  key={index}
-                  className="relative"
-                >
+                <div key={index} className="relative">
                   <button
                     onClick={() => handleMenuItemClick(item.href, item.name)}
                     className={`px-6 py-3 rounded-full font-regular uppercase text-sm transition-all
@@ -160,10 +165,10 @@ const Header: React.FC = () => {
                   <button
                     onClick={handleMoreClick}
                     className={`px-6 py-3 rounded-full font-regular uppercase text-sm transition-all
-      ${activeMenuItem === 'More'
+                      ${activeMenuItem === 'More'
                         ? 'bg-gradient-to-r from-orange-400 to-orange-500 font-semibold text-white shadow border border-orange-400'
                         : 'bg-transparent text-[#000923] font-medium hover:bg-orange-100 hover:text-orange-500'}
-    `}
+                    `}
                   >
                     <span className="flex items-center">
                       More
@@ -203,6 +208,9 @@ const Header: React.FC = () => {
 
         {/* Right Section */}
         <div className="flex items-center gap-3 ml-4">
+          {/* Language Switcher */}
+          <LanguageSwitcher />
+
           {/* Admin Button */}
           <button
             onClick={() => router.push('/admin')}
@@ -214,8 +222,8 @@ const Header: React.FC = () => {
             </svg>
             Admin
           </button>
+
           {/* User Profile or Login Button */}
-          {/* TEMPORARY: Always show user profile for testing */}
           {true ? (
             <div className="flex items-center gap-3">
               <button
@@ -321,6 +329,11 @@ const Header: React.FC = () => {
                 </button>
               </div>
             ))}
+          </div>
+
+          {/* Mobile Language Switcher */}
+          <div className="w-4/5 mt-4">
+            <LanguageSwitcher />
           </div>
 
           {/* Mobile Login/Profile Button */}

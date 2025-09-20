@@ -23,10 +23,17 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
+      <head>
+        <script src="/assets/scripts/lang-config.js" strategy="beforeInteractive" />
+        <script src="/assets/scripts/translation.js" strategy="beforeInteractive" />
+        <script
+          src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+          strategy="afterInteractive"
+        />
+      </head>
       <body className="antialiased">
-        <ReduxProvider>
-          {children}
-        </ReduxProvider>
+        <div id="google_translate_element" className="hidden" />
+        <ReduxProvider>{children}</ReduxProvider>
       </body>
     </html>
   );
