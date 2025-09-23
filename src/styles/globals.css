@@ -190,3 +190,45 @@
     background-color: var(--footer-bg-2);
   }
 }
+
+/* Hide Google Translate Bar - Comprehensive approach */
+.goog-te-banner-frame.skiptranslate {
+  display: none !important;
+}
+
+body {
+  top: 0px !important;
+}
+
+/* Additional selectors to ensure the Google Translate bar is hidden */
+.goog-te-balloon-frame {
+  display: none !important;
+}
+
+.goog-te-menu-frame {
+  display: none !important;
+}
+
+.goog-te-menu-value span {
+  display: none !important;
+}
+
+#google_translate_element {
+  display: none !important;
+}
+
+/* Hide the Google Translate iframe if it exists */
+iframe[src*="translate.google"] {
+  display: none !important;
+}
+
+/* Override any inline styles that Google Translate might add */
+.skiptranslate {
+  display: none !important;
+}
+
+/* Ensure no height is added to body for Google Translate */
+.goog-te-banner-frame ~ body {
+  top: 0px !important;
+  position: static !important;
+}

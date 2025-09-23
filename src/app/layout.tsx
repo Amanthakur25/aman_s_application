@@ -2,6 +2,7 @@ import React from 'react';
 import type { Metadata, Viewport } from 'next';
 import ReduxProvider from '@/providers/ReduxProvider';
 import '@/styles/globals.css';
+import Script from 'next/script';
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -24,15 +25,15 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
       <head>
-        <script src="/assets/scripts/lang-config.js" strategy="beforeInteractive" />
-        <script src="/assets/scripts/translation.js" strategy="beforeInteractive" />
-        <script
+        <Script src="/assets/scripts/lang-config.js" strategy="beforeInteractive" />
+        <Script src="/assets/scripts/translation.js" strategy="beforeInteractive" />
+        <Script
           src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
           strategy="afterInteractive"
         />
       </head>
       <body className="antialiased">
-        <div id="google_translate_element" className="hidden" />
+        <div id="google_translate_element" style={{ display: 'none' }} />
         <ReduxProvider>{children}</ReduxProvider>
       </body>
     </html>
